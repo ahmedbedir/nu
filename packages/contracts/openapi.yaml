@@ -1,0 +1,208 @@
+openapi: 3.1.0
+info:
+  title: HomeCare Egypt API
+  version: 0.1.0
+  description: >
+    Versioned REST surface for the HomeCare Egypt marketplace. Every protected route
+    requires a Sanctum bearer token and is authorised by policy. Responses are always
+    JSON, including errors (401 unauthenticated, 403 forbidden, 422 validation).
+
+servers:
+  - url: http://127.0.0.1:8000/api/v1
+    description: Local development
+
+tags:
+  - name: System
+  - name: Auth
+  - name: Catalog
+  - name: Patients
+
+paths:
+  /health:
+    get:
+      tags: [System]
+      summary: Real dependency probe (database connectivity)
+      security: []
+      responses:
+        '200': { description: Healthy }
+        '503': { description: Degraded }
+
+  /auth/otp/request:
+    post:
+      tags: [Auth]
+      summary: Request a phone OTP (rate limited, no account enumeration)
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [phone]
+              properties:
+                phone: { type: string, example: '01012345678' }
+                purpose: { type: string, enum: [login, verify_phone, recover, step_up] }
+      responses:
+        '200':
+          description: Requested. `dev_code` is populated in local/testing only.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requested: { type: boolean }
+                  expires_at: { type: string, format: date-time }
+                  dev_code: { type: [string, 'null'] }
+        '422': { description: Rate limited or invalid phone }
+
+  /auth/otp/verify:
+    post:
+      tags: [Auth]
+      summary: Exchange a valid code for a bearer token
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [phone, code]
+              properties:
+                phone: { type: string }
+                code: { type: string, pattern: '^[0-9]{6}$' }
+      responses:
+        '200':
+          description: Signed in
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token: { type: string }
+                  user:
+                    type: object
+                    properties:
+                      public_id: { type: string }
+                      name: { type: string }
+                      phone: { type: string }
+                      identity_status: { type: string }
+                  first_time: { type: boolean }
+        '422': { description: Invalid or expired code }
+
+  /auth/me:
+    get:
+      tags: [Auth]
+      summary: The authenticated account
+      responses:
+        '200': { description: The caller }
+        '401': { description: Unauthenticated }
+
+  /auth/logout:
+    post:
+      tags: [Auth]
+      summary: Revoke the current device token
+      responses:
+        '200': { description: Revoked }
+
+  /services:
+    get:
+      tags: [Catalog]
+      summary: Published services (guest-visible)
+      security: []
+      responses:
+        '200':
+          description: Service list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items: { $ref: '#/components/schemas/Service' }
+
+  /patients:
+    get:
+      tags: [Patients]
+      summary: Patients this account may see (scoped by link or active delegation)
+      responses:
+        '200': { description: Paginated list }
+        '401': { description: Unauthenticated }
+    post:
+      tags: [Patients]
+      summary: Create a patient and link the creator
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [full_name, sex, relationship]
+              properties:
+                full_name: { type: string }
+                birth_date: { type: string, format: date }
+                sex: { type: string, enum: [male, female, unspecified] }
+                relationship: { type: string, enum: [self, parent, guardian, relative, caregiver] }
+      responses:
+        '201': { description: Created }
+        '422': { description: Validation error }
+
+  /patients/{patient}:
+    get:
+      tags: [Patients]
+      summary: Read a patient (clinical block requires medical scope)
+      parameters:
+        - { name: patient, in: path, required: true, schema: { type: string }, description: public_id (ULID) }
+      responses:
+        '200': { description: Patient record }
+        '403': { description: Forbidden — no link, delegation or scope }
+    patch:
+      tags: [Patients]
+      summary: Update demographics
+      responses:
+        '200': { description: Updated }
+        '403': { description: Forbidden }
+
+  /patients/{patient}/delegations:
+    post:
+      tags: [Patients]
+      summary: Grant a scoped delegation to a registered account
+      description: >
+        Scopes are exact: `book` never implies `view_medical`. Returns 422 with
+        `code: grantee_not_found` when the phone has no account — the response never
+        confirms whether a patient record exists.
+      responses:
+        '201': { description: Delegation active }
+        '403': { description: Caller may not manage this patient }
+
+  /patients/{patient}/delegations/{delegation}:
+    delete:
+      tags: [Patients]
+      summary: Revoke a delegation (immediate effect)
+      responses:
+        '200': { description: Revoked }
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Sanctum
+  schemas:
+    Service:
+      type: object
+      properties:
+        public_id: { type: string }
+        code: { type: string }
+        name_ar: { type: string }
+        name_en: { type: string }
+        description_ar: { type: [string, 'null'] }
+        description_en: { type: [string, 'null'] }
+        billing_mode: { type: string, enum: [fixed, time] }
+        default_duration_minutes: { type: integer }
+        base_price: { type: string, description: 'Decimal EGP' }
+        currency: { type: string, example: EGP }
+        requires_medical_order: { type: boolean }
+
+security:
+  - bearerAuth: []

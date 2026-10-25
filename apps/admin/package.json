@@ -1,0 +1,5 @@
+{
+  "name":"homecare-admin","private":true,"version":"0.1.0","type":"module",
+  "scripts":{"dev":"vite --port 3001","build":"vite build","preview":"vite preview --port 3001"},
+  "dependencies":{"@vitejs/plugin-vue":"5.2.1","vite":"6.0.7","typescript":"5.7.3","vue":"3.5.13"},"devDependencies":{}
+}

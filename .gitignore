@@ -41,3 +41,10 @@ Thumbs.db
 .idea/
 .vscode/*
 !.vscode/extensions.json
+
+# Local agent/tool settings (machine-specific permissions)
+.claude/
+
+
+# Screenshot scratch
+apps/*/.shots/

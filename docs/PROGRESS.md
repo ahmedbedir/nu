@@ -71,3 +71,28 @@ Last updated: 2026-10-25
 
 Catalog/pricing HTTP endpoints and provider-onboarding endpoints; then the front-ends
 (Next.js customer, Vue admin operations room, Flutter app), then Phase 5–7.
+
+## Front-ends
+
+- [x] **Next.js customer portal** (`apps/customer-web`) — Arabic RTL first, English LTR,
+      home / services / login / patients. Real API data; no mock content. Builds clean
+      (`next build`, 12 routes) and renders verified in a real browser at 1440×900 with
+      zero console errors. Local screenshots were visually inspected during this session.
+- [x] **Vue 3 operations room** (`apps/admin`) — staff sign-in, SOS strip, KPI row,
+      event stream and coverage map panels. Where data is not yet wired it shows an
+      explicit "not connected" state instead of inventing bookings. Builds clean.
+- [ ] **Flutter shared app** — **blocked**: no Flutter SDK on this machine. Contracts and
+      tokens are ready in `packages/contracts`; the app is not faked (see KNOWN_GAPS).
+
+## Shared contracts
+
+- [x] `packages/contracts/openapi.yaml` — the `/api/v1` surface.
+- [x] `packages/contracts/design-tokens.json` — one brand source for all surfaces.
+- [x] `packages/contracts/events.md` — past-tense fact events, no PHI in payloads.
+
+## Verification beyond unit tests
+
+- [x] `tools/e2e-smoke.sh` — 13 real HTTP steps against the running server (health,
+      catalog, 401, OTP request/verify, wrong-code rejection, me, create/list/read patient,
+      guest denial, cross-account IDOR denial). **All 13 pass.**
+- [x] Visual check: `/ar`, `/ar/services`, `/en` at 1440×900, plus the admin login screen.

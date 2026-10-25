@@ -12,8 +12,16 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // API requests must never be redirected to a web "login" page.
+        // Returning null makes the Authenticate middleware throw, which renders as 401.
+        $middleware->redirectGuestsTo(
+            fn ($request) => $request->is('api/*') ? null : '/login'
+        );
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        // Every /api/* response is JSON: 401 for guests, 422 for validation,
+        // 403 for authorization — never an HTML redirect.
+        $exceptions->shouldRenderJsonWhen(
+            fn ($request) => $request->is('api/*') || $request->expectsJson()
+        );
     })->create();

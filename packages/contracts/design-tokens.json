@@ -1,0 +1,18 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "color": {
+    "brand": { "primary": "#1267B2", "navy": "#102C46", "surface": "#F5F9FC" },
+    "action": { "safety": "#E64255", "success": "#18A879" },
+    "neutral": { "white": "#FFFFFF", "border": "#D7E3EE", "muted": "#667D93" }
+  },
+  "typography": { "arabic": "Tajawal", "latin": "Inter" },
+  "spacing": { "gutter": "16px", "cardRadius": "14px", "controlRadius": "12px" },
+  "productRules": {
+    "defaultLocale": "ar",
+    "timezone": "Africa/Cairo",
+    "currency": "EGP",
+    "sosHoldSeconds": 3,
+    "offerTtlSeconds": 30,
+    "dispatchRadiusKm": 10
+  }
+}

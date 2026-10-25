@@ -68,6 +68,16 @@
 | T-060 | SosTest | Senior closure without the reporter requires a documented reason | PASS |
 | — | SosTest | Concurrent incidents are independent | PASS |
 
+### Browser / HTTP verification — 2026-10-25
+
+| Surface | Command / URL | Result |
+|---|---|---|
+| Laravel API | `bash tools/e2e-smoke.sh` against `127.0.0.1:8000` | **13/13 PASS**: health, catalog, JSON 401/422, OTP, patient CRUD, IDOR denial |
+| Customer web | `npm run build` in `apps/customer-web` | **PASS**: Next 15.5.28, 12 routes compiled |
+| Customer web visual | `/ar`, `/ar/services`, `/en` at 1440×900 | **PASS**: RTL/LTR, no overlap, seeded services visible, zero console errors |
+| Admin web | `npm run build` in `apps/admin` | **PASS**: Vite production build |
+| Admin visual | `/` at 1440×900 | **PASS**: Arabic staff login rendered; browser console had no errors |
+
 ### Notes / honest gaps
 
 - No test is SKIPPED. Nothing is marked PASS without an executed assertion.
