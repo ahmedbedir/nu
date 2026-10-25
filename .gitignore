@@ -1,0 +1,43 @@
+# Root
+
+# Local backups of the protected database — never commit
+backups/
+*.sql
+*.sql.gz
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+!.env.testing
+
+# Composer / vendor
+/apps/api/vendor/
+/apps/api/storage/*.key
+/apps/api/storage/framework/cache/data/*
+/apps/api/storage/framework/sessions/*
+/apps/api/storage/framework/views/*
+/apps/api/storage/logs/*
+!/apps/api/storage/**/.gitignore
+
+# Node
+node_modules/
+.next/
+dist/
+.turbo/
+*.log
+
+# Flutter
+/apps/mobile/.dart_tool/
+/apps/mobile/build/
+/apps/mobile/.flutter-plugins
+/apps/mobile/.flutter-plugins-dependencies
+/apps/mobile/ios/Pods/
+/apps/mobile/android/.gradle/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
