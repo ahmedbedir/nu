@@ -50,7 +50,7 @@ Last updated: 2026-10-25
       documented senior closure (T-057…T-060).
 - [x] Service catalog publish/suspend with reviewer permission and version snapshots.
 - [x] Clinical screening engine (eligible / requires_information / review / red flag).
-- [~] Screening is not yet invoked from booking creation (engine tested standalone).
+- [x] Screening is invoked from booking creation and gates dispatch eligibility.
 - [x] Booking HTTP layer: create, search, quote, confirm; provider accept/decline.
 - [x] Visit HTTP layer: departure, arrival claim, customer confirmation, completion.
 - [x] SOS HTTP layer: intake, honest channel results, ACK, close.

@@ -104,6 +104,16 @@
 | T-055 | RefundGovernanceTest | Large refund requires a second, different approver | PASS |
 | T-048 | RefundGovernanceTest | Approved refund posts a balanced compensating journal | PASS |
 
+## Run 2026-10-25 — Booking clinical gate integration
+
+**3 new clinical booking cases / 8 assertions. Cumulative: 86 passed, 287 assertions, 0 failed**
+
+| Test ID | Case | Result |
+|---|---|---|
+| T-015 | Hard red flag refuses conventional booking and creates no row | PASS |
+| T-008 | UNKNOWN required answer creates `requires_information` and cannot dispatch | PASS |
+| — | Soft clinical flag creates `clinical_review_pending` and cannot dispatch | PASS |
+
 ### Browser / HTTP verification — 2026-10-25
 
 | Surface | Command / URL | Result |

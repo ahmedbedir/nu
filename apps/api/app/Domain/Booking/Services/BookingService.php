@@ -3,6 +3,7 @@
 namespace App\Domain\Booking\Services;
 
 use App\Domain\Booking\Exceptions\OfferNotAvailableException;
+use App\Domain\Clinical\Services\EligibilityScreening;
 use App\Domain\Financials\Services\PricingEngine;
 use App\Domain\Matching\Services\CandidateFinder;
 use App\Models\Booking;
@@ -22,6 +23,7 @@ class BookingService
         private readonly CandidateFinder $finder,
         private readonly DispatchService $dispatch,
         private readonly PricingEngine $pricing,
+        private readonly EligibilityScreening $screening,
     ) {}
 
     public function createRequest(User $customer, Patient $patient, PatientAddress $address, Service $service, array $data): Booking
@@ -30,9 +32,22 @@ class BookingService
             throw new \DomainException('الخدمة غير متاحة للحجز');
         }
 
+        $screening = $this->screening->screen($service, $patient, $data['form_answers'] ?? []);
+
+        if ($screening['outcome'] === EligibilityScreening::REJECTED_RED_FLAG) {
+            throw new \DomainException('لا يمكن إنشاء حجز عادي لهذه الحالة: '.$screening['guidance']);
+        }
+
         $this->assertCoordinates($address);
 
-        return DB::transaction(function () use ($customer, $patient, $address, $service, $data) {
+        $initialState = match ($screening['outcome']) {
+            EligibilityScreening::ELIGIBLE => 'search_pending',
+            EligibilityScreening::REQUIRES_INFORMATION => 'requires_information',
+            EligibilityScreening::REQUIRES_REVIEW => 'clinical_review_pending',
+            default => 'eligibility_blocked',
+        };
+
+        return DB::transaction(function () use ($customer, $patient, $address, $service, $data, $initialState) {
             $request = BookingRequest::create([
                 'customer_user_id' => $customer->id,
                 'patient_id' => $patient->id,
@@ -41,7 +56,7 @@ class BookingService
                 'required_gender' => $data['required_gender'],
                 'gender_consent_for_alternate' => $data['gender_consent_for_alternate'] ?? false,
                 'mode' => $data['mode'] ?? 'instant',
-                'state' => 'search_pending',
+                'state' => $initialState,
                 'form_answers' => $data['form_answers'] ?? null,
                 // Recorded for audit only. Never substitutes the visit address.
                 'booking_device_lat' => $data['booking_device_lat'] ?? null,
@@ -54,7 +69,7 @@ class BookingService
                 'customer_user_id' => $customer->id,
                 'patient_id' => $patient->id,
                 'visit_address_id' => $address->id,
-                'state' => 'search_pending',
+                'state' => $initialState,
                 'scheduled_for' => $request->requested_for,
             ]);
         });
@@ -62,6 +77,10 @@ class BookingService
 
     public function search(Booking $booking): array
     {
+        if (! in_array($booking->state, ['search_pending', 'searching'], true)) {
+            throw new \DomainException('الحجز غير جاهز للبحث أو يحتاج مراجعة قبل المطابقة');
+        }
+
         $radius = (int) config('homecare.dispatch.initial_radius_km', 10);
         $candidates = $this->finder->find($booking, $radius);
 

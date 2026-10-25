@@ -218,6 +218,82 @@ class BookingFlowTest extends TestCase
         ])->assertStatus(500); // DomainException: address must be verified first
     }
 
+    public function test_T015_red_flag_booking_is_refused_outright(): void
+    {
+        [$customer, $patient, $address] = $this->bookableSetup();
+
+        $service = Service::factory()->create([
+            'red_flag_screen' => [
+                ['field' => 'chest_pain', 'op' => 'true', 'code' => 'cardiac_red_flag', 'severity' => 'hard'],
+            ],
+        ]);
+
+        Sanctum::actingAs($customer);
+
+        $res = $this->postJson('/api/v1/bookings', [
+            'patient_public_id' => $patient->public_id,
+            'address_public_id' => $address->public_id,
+            'service_public_id' => $service->public_id,
+            'required_gender' => 'female',
+            'form_answers' => ['chest_pain' => true],
+        ]);
+
+        // Conventional booking stops; no booking row is created.
+        $res->assertStatus(500);
+        $this->assertDatabaseCount('bookings', 0);
+    }
+
+    public function test_T008_unknown_safety_answer_creates_a_blocked_pending_information_booking(): void
+    {
+        [$customer, $patient, $address] = $this->bookableSetup();
+
+        $service = Service::factory()->create([
+            'required_fields' => ['weight_kg'],
+        ]);
+
+        Sanctum::actingAs($customer);
+
+        $created = $this->postJson('/api/v1/bookings', [
+            'patient_public_id' => $patient->public_id,
+            'address_public_id' => $address->public_id,
+            'service_public_id' => $service->public_id,
+            'required_gender' => 'female',
+            'form_answers' => ['weight_kg' => 'UNKNOWN'],
+        ])->assertCreated();
+
+        $this->assertSame('requires_information', $created->json('booking.state'));
+
+        // It must not be dispatchable until the safety data is supplied.
+        $bookingId = $created->json('booking.public_id');
+        $this->postJson("/api/v1/bookings/{$bookingId}/search")->assertStatus(500);
+    }
+
+    public function test_soft_clinical_rule_routes_the_booking_to_review_not_dispatch(): void
+    {
+        [$customer, $patient, $address] = $this->bookableSetup();
+
+        $service = Service::factory()->create([
+            'red_flag_screen' => [
+                ['field' => 'fever_c', 'op' => 'gte', 'value' => 39, 'code' => 'high_fever', 'severity' => 'soft'],
+            ],
+        ]);
+
+        Sanctum::actingAs($customer);
+
+        $created = $this->postJson('/api/v1/bookings', [
+            'patient_public_id' => $patient->public_id,
+            'address_public_id' => $address->public_id,
+            'service_public_id' => $service->public_id,
+            'required_gender' => 'female',
+            'form_answers' => ['fever_c' => 39.4],
+        ])->assertCreated();
+
+        $this->assertSame('clinical_review_pending', $created->json('booking.state'));
+
+        $bookingId = $created->json('booking.public_id');
+        $this->postJson("/api/v1/bookings/{$bookingId}/search")->assertStatus(500);
+    }
+
     public function test_quote_contains_callout_and_commission_is_tracked(): void
     {
         [$customer, $patient, $address, $service] = $this->bookableSetup();

@@ -187,6 +187,11 @@ paths:
       tags: [Bookings]
       summary: Create a booking request for a patient at a verified visit address
       description: >
+        The deterministic clinical screen runs before the row is created. A hard
+        red flag returns 500 in the current exception surface and creates no booking;
+        UNKNOWN required answers create `requires_information`; soft flags create
+        `clinical_review_pending`; only `search_pending` can dispatch.
+      description: >
         `booking_device_lat/lng` are recorded for audit only and never become the
         destination. The visit address must be verified and have coordinates.
       responses:
@@ -197,8 +202,10 @@ paths:
     post:
       tags: [Bookings]
       summary: Open a dispatch wave for eligible, fresh-GPS providers
+      description: Rejected unless the booking state is `search_pending` or `searching`.
       responses:
         '200': { description: Wave with offers, or `no_match` when none qualify }
+        '500': { description: Booking awaits safety information or clinical review }
 
   /bookings/{booking}/quote:
     post:

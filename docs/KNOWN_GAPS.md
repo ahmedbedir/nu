@@ -16,9 +16,11 @@ Nothing here is presented to users as working.
 
 - **Live operations stream** — the admin room renders an explicit "not connected" state
   rather than fake data. Needs an authenticated Reverb/SSE channel (T-061).
-- **Eligibility screening is not yet called from the booking endpoint** — the engine is
-  built and tested, but `BookingController@store` does not run it yet. Wiring it in must
-  also decide the customer-facing UX for `requires_information`.
+- **Eligibility screening is now called from booking creation** — hard red flags stop
+  the conventional booking; UNKNOWN fields create `requires_information`; soft rules
+  create `clinical_review_pending`. The current Laravel exception surface still returns
+  500 for these DomainExceptions; a later API error mapper should return typed 422/409
+  responses with the screening outcome.
 - **Refund approval HTTP path is staff-gated but the admin SPA has no finance screen yet.**
 
 Implemented since the previous gap report:
