@@ -30,20 +30,44 @@ Last updated: 2026-10-25
 - [~] KYC document upload (schema present; endpoints pending).
 - [~] Identity verification review workflow (schema present; endpoints pending).
 
-## Phase 2 — Catalog, matching, booking  🟡 schema complete
+## Phase 2 — Catalog, matching, booking  ✅ (core engine)
 
 - [x] Schema for service catalog, dispatch, holds, quotes, reservations.
 - [x] Schema for visits, check-ins, clinical notes, SOS.
 - [x] Schema for financials (pricing, invoices, ledger, payments, refunds, disputes).
 - [x] Schema for recurrence, shifts, subscriptions, support, admin approvals.
-- [ ] Provider onboarding endpoints + credential review workflow (T-011/T-012).
-- [ ] Service catalog publish/approval endpoints.
-- [ ] Eligibility engine wiring + deterministic gate transitions (T-015).
-- [ ] Dispatch waves, 30s offer TTL, atomic single-winner award (T-022/T-023).
-- [ ] Quote + separate customer confirmation (T-024).
+- [x] **Provider eligibility engine** — deterministic; invalid/expired/unverified
+      credential → zero offers, regardless of rating (T-011/T-012).
+- [x] **Dispatch with atomic single winner** — `FOR UPDATE` + unique active-hold column
+      proves exactly one winner among 5 concurrent acceptors (T-023/T-024).
+- [x] **Booking state machine** with server-side rejection of invalid transitions.
+- [x] **Visit session** — GPS-only arrival yields zero billing; only verified two-sided
+      check-in starts the timer (T-030/T-031); 30-minute minimum then per-minute (T-034).
+- [x] **Double-entry ledger** — balanced journals enforced; unbalanced posts rejected (T-048).
+- [x] **Idempotent payment webhook** — replayed 10× settles once; invalid signature never
+      settles; cash disagreement → dispute (T-045/T-046/T-047).
+- [x] **SOS** — durable intake, honest delivery status, separate ACK/RESOLVE, auto-escalation,
+      documented senior closure (T-057…T-060).
+- [~] Service catalog publish/approval HTTP endpoints (engine + schema ready).
+- [~] Red-flag screening endpoint (rules column exists; engine pending).
+
+## Phase 3 — Live visit + SOS  ✅ (core)
+
+- [x] Departure ETA, departure, arrival claim, customer confirmation, completion.
+- [x] Append-only `visit_time_events`; human-exception path recorded distinctly from GPS.
+- [x] SOS intake, delivery attempts, acknowledgements, escalations, closure rules.
+- [ ] Live trip map transport + authenticated WebSocket channels (T-061).
+- [ ] Offline queue on the mobile client (T-058 device side).
+
+## Phase 4 — Money  ✅ (core)
+
+- [x] Ledger accounts + balanced journal posting + whole-ledger balance check.
+- [x] Electronic settlement via verified webhook only; idempotent by gateway event id.
+- [x] Cash dual attestation; commission recorded as a provider receivable.
+- [ ] Pricing rule evaluation (min 30 min / night / holiday / travel) HTTP layer.
+- [ ] Refund + dispute workflow endpoints with manager approval (T-055).
 
 ## Next
 
-Phase 3 (live visit + SOS), Phase 4 (money), Phase 5 (recurrence/plans),
-Phase 6 (ops), Phase 7 (hardening + sign-offs). Front-ends (Next.js, Vue, Flutter)
-follow the API slices.
+Catalog/pricing HTTP endpoints and provider-onboarding endpoints; then the front-ends
+(Next.js customer, Vue admin operations room, Flutter app), then Phase 5–7.

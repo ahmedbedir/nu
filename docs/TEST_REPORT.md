@@ -6,7 +6,7 @@
 
 ## Run 2026-10-25 — Phase 0/1
 
-**Result: 18 passed (58 assertions), 0 failed**
+**Result: 18 passed (58 assertions), 0 failed** — initial identity/patient slice.
 
 | Test ID | Suite | What it proves | Result |
 |---|---|---|---|
@@ -31,15 +31,53 @@
 | — | AuditChainTest | Audit rows form a verifiable hash chain | PASS |
 | — | AuditChainTest | Tampering is detected by chain verification | PASS |
 
+## Run 2026-10-25 — Phase 2/3/4 service layer
+
+**Result (cumulative): 49 passed (173 assertions), 0 failed**
+
+| Test ID | Suite | What it proves | Result |
+|---|---|---|---|
+| T-011 | ProviderEligibilityTest | No valid licence → never eligible | PASS |
+| T-011 | ProviderEligibilityTest | **Expired** licence blocks eligibility even when approved | PASS |
+| — | ProviderEligibilityTest | Unverified licence does not count as valid | PASS |
+| T-012 | ProviderEligibilityTest | Approved for service A is not eligible for service B | PASS |
+| — | ProviderEligibilityTest | Suspended profile is not eligible even with a valid licence | PASS |
+| — | ProviderEligibilityTest | Unpublished service is not bookable | PASS |
+| T-023 | DispatchTest | **5 concurrent acceptors → exactly ONE winner and one active hold** | PASS |
+| T-023 | DispatchTest | Provisional accept does NOT confirm; `confirmed_at` stays null | PASS |
+| T-022 | DispatchTest | Expired offer cannot be accepted | PASS |
+| T-024 | DispatchTest | Customer confirmation is a separate step; expired hold releases safely | PASS |
+| — | DispatchTest | Confirmation inside the window confirms the booking | PASS |
+| — | DispatchTest | A provider suspended after the offer cannot accept it | PASS |
+| T-030 | VisitSessionTest | **GPS inside the geofence with no customer confirmation → zero billing** | PASS |
+| T-031 | VisitSessionTest | Provider claim + customer confirm → exactly one session start (idempotent) | PASS |
+| — | VisitSessionTest | Customer cannot confirm before the provider claims arrival | PASS |
+| T-034 | VisitSessionTest | 12 min → 30 min minimum; 47 min → exactly 47 | PASS |
+| — | VisitSessionTest | Completion records billed minutes from server time | PASS |
+| — | VisitSessionTest | Human exception path is recorded distinctly from GPS | PASS |
+| T-048 | FinanceIntegrityTest | Unbalanced journal is rejected | PASS |
+| T-048 | FinanceIntegrityTest | Balanced journal posts and verifies | PASS |
+| T-045 | FinanceIntegrityTest | **Webhook replayed 10× posts exactly ONE settlement** | PASS |
+| T-046 | FinanceIntegrityTest | Invalid signature never settles | PASS |
+| T-047 | FinanceIntegrityTest | Cash disagreement → dispute, never settlement | PASS |
+| — | FinanceIntegrityTest | Cash settles only on dual attestation; commission receivable recorded | PASS |
+| T-059 | SosTest | ACK and RESOLVE are separate events | PASS |
+| T-057 | SosTest | Both reporter roles can raise an incident | PASS |
+| T-058 | SosTest | Log-only adapter never reports "delivered" | PASS |
+| T-059 | SosTest | Unacknowledged incident escalates automatically past the SLA | PASS |
+| T-060 | SosTest | Senior closure without the reporter requires a documented reason | PASS |
+| — | SosTest | Concurrent incidents are independent | PASS |
+
 ### Notes / honest gaps
 
-- No test is currently SKIPPED. Nothing is marked PASS without an executed assertion.
-- Concurrency (T-023), dispatch TTL (T-022), GPS-only arrival (T-030), ledger
-  idempotency (T-045) and SOS delivery (T-057…) are **not yet written** — the schema
-  exists but the service layer is the next phase. They are deliberately absent rather
-  than faked.
-- The 18 above are unit/feature tests on synthetic data. External integrations
-  (SMS, maps, payment gateway) are **NOT LIVE VERIFIED** and use safe adapters.
+- No test is SKIPPED. Nothing is marked PASS without an executed assertion.
+- Still **not written** (schema exists, service layer pending): T-014 catalog publish
+  routing, T-015 red-flag screen endpoint, T-025 travel-gap conflict, T-036 overrun cap,
+  T-041 12-hour shift cap, T-043 subscription consumption, T-061 live-location channel
+  authz, T-068 malware scan, T-069 rota fail-closed. Deliberately absent rather than faked.
+- All tests run on **synthetic** data against the isolated `nu_test` database.
+- External integrations (SMS, maps, payment gateway) are **NOT LIVE VERIFIED**; they sit
+  behind adapters (`SmsSender`, `GeoDistance`) that report honest status.
 
 ### Engine-compatibility findings (proven during migration, not assumed)
 
