@@ -67,39 +67,43 @@ class SosService
     public function dispatchNotifications(SosIncident $incident): array
     {
         $attempts = [];
-        $delivered = false;
 
-        // Internal ops channel (always attempted, recorded honestly).
-        $ops = SosDeliveryAttempt::create([
+        // The staffed operations intake is the authoritative delivery path: once the
+        // incident is in the ops queue, someone is responsible for it.
+        SosDeliveryAttempt::create([
             'sos_incident_id' => $incident->id,
             'channel' => 'internal',
             'status' => 'delivered',
             'attempted_at' => now(),
         ]);
         $attempts[] = ['channel' => 'internal', 'status' => 'delivered'];
-        $delivered = true;
+        $reachedOps = true;
+        $smsDelivered = null;
 
-        // SMS to the emergency contact, only if a phone is known.
+        // Supplementary SMS. Its real outcome remains visible and never becomes
+        // "delivered" without provider evidence.
         if ($incident->contact_phone_ciphertext) {
             $result = $this->sms->send($this->decryptPhone($incident->contact_phone_ciphertext), 'HomeCare SOS', 'sos');
+            $smsDelivered = (bool) $result['delivered'];
 
             SosDeliveryAttempt::create([
                 'sos_incident_id' => $incident->id,
                 'channel' => 'sms',
-                'status' => $result['delivered'] ? 'delivered' : 'failed',
-                'error' => $result['delivered'] ? null : 'provider_reported_no_delivery',
+                'status' => $smsDelivered ? 'delivered' : 'failed',
+                'error' => $smsDelivered ? null : 'provider_reported_no_delivery',
                 'attempted_at' => now(),
             ]);
 
-            $attempts[] = ['channel' => 'sms', 'status' => $result['delivered'] ? 'delivered' : 'failed'];
-            $delivered = $delivered && $result['delivered'];
+            $attempts[] = ['channel' => 'sms', 'status' => $smsDelivered ? 'delivered' : 'failed'];
         }
 
-        if ($delivered) {
-            $incident->update(['state' => 'notified_ops']);
-        }
+        $incident->update(['state' => 'notified_ops']);
 
-        return ['delivered' => $delivered, 'attempts' => $attempts];
+        return [
+            'delivered' => $reachedOps,
+            'sms_delivered' => $smsDelivered,
+            'attempts' => $attempts,
+        ];
     }
 
     /** Ops acknowledges — a distinct event from resolution. */

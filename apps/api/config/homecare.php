@@ -45,6 +45,20 @@ return [
         // Time-based services: first 30 minutes are the minimum billed block.
         'time_minimum_minutes' => 30,
         'time_billing_increment_minutes' => 1,
+
+        // Defaults used when no admin price rule overrides them. Illustrative
+        // only — real prices require accounting/legal review before launch.
+        'callout_fee' => (string) env('HC_CALLOUT_FEE', '50.00'),
+        'travel_per_km' => (string) env('HC_TRAVEL_PER_KM', '8.00'),
+        'time_minute_rate' => (string) env('HC_TIME_MINUTE_RATE', '4.00'),
+        'night_uplift_percent' => (string) env('HC_NIGHT_UPLIFT_PERCENT', '25'),
+        'commission_percent' => (string) env('HC_COMMISSION_PERCENT', '15'),
+        // Night window is Africa/Cairo local time.
+        'night_starts_at' => env('HC_NIGHT_STARTS_AT', '21:00'),
+        'night_ends_at' => env('HC_NIGHT_ENDS_AT', '07:00'),
+        // Time overrun the customer pre-approves; beyond it needs new consent (#189).
+        'overrun_cap_minutes' => (int) env('HC_OVERRUN_CAP_MINUTES', 30),
+        'quote_ttl_minutes' => (int) env('HC_QUOTE_TTL_MINUTES', 10),
     ],
 
     /*

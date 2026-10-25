@@ -60,6 +60,11 @@ class ProfessionalProfile extends Model
         return $this->hasMany(ProviderArea::class);
     }
 
+    public function presence(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(ProviderPresence::class)->latestOfMany('captured_at');
+    }
+
     /** Credentials that are verified and not past their expiry date. */
     public function validCredentials(): HasMany
     {

@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProviderPresence extends Model
 {
+    // The schema intentionally uses the singular physical name `hc_provider_presence`.
+    protected $table = 'provider_presence';
+
     protected $fillable = [
         'professional_profile_id', 'status', 'latitude', 'longitude', 'captured_at',
     ];

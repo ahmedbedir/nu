@@ -182,6 +182,130 @@ paths:
       responses:
         '200': { description: Revoked }
 
+  /bookings:
+    post:
+      tags: [Bookings]
+      summary: Create a booking request for a patient at a verified visit address
+      description: >
+        `booking_device_lat/lng` are recorded for audit only and never become the
+        destination. The visit address must be verified and have coordinates.
+      responses:
+        '201': { description: Booking created in `search_pending` }
+        '403': { description: Caller may not book for this patient }
+
+  /bookings/{booking}/search:
+    post:
+      tags: [Bookings]
+      summary: Open a dispatch wave for eligible, fresh-GPS providers
+      responses:
+        '200': { description: Wave with offers, or `no_match` when none qualify }
+
+  /bookings/{booking}/quote:
+    post:
+      tags: [Bookings]
+      summary: Produce the priced quote (callout, procedure/time, travel, night uplift)
+      responses:
+        '200': { description: Quote with immutable line snapshot }
+        '500': { description: No accepted professional yet }
+
+  /bookings/{booking}/confirm:
+    post:
+      tags: [Bookings]
+      summary: Customer confirms the quote — the only step that makes a booking confirmed
+      responses:
+        '200': { description: Confirmed, visit created in `scheduled` }
+        '500': { description: Hold expired or invalid state }
+
+  /offers/{offer}/accept:
+    post:
+      tags: [Bookings]
+      summary: Provider provisionally accepts an offer (creates an exclusive hold)
+      responses:
+        '200': { description: Hold created; booking awaits customer confirmation }
+        '409': { description: Offer expired, already answered or booking already awarded }
+
+  /visits/{visit}/arrive:
+    post:
+      tags: [Visits]
+      summary: Provider claims arrival (geofence signal only — never starts billing)
+      responses:
+        '200': { description: Arrival claimed; `session_started_at` remains null }
+
+  /visits/{visit}/confirm-arrival:
+    post:
+      tags: [Visits]
+      summary: Customer confirms arrival — starts the billed session
+      responses:
+        '200': { description: Session started }
+        '500': { description: Provider has not claimed arrival yet }
+
+  /visits/{visit}/complete:
+    post:
+      tags: [Visits]
+      summary: Provider completes the visit; billed minutes derived from server time
+      responses:
+        '200': { description: Completed with `billed_minutes` }
+
+  /sos:
+    post:
+      tags: [Safety]
+      summary: Raise an SOS incident (durable intake, then honest fan-out)
+      responses:
+        '201':
+          description: >
+            Incident created. `notified` means the staffed operations intake received
+            it. `sms_delivered` is false unless a provider confirmed delivery.
+        '403': { description: Booking not visible to the caller }
+
+  /sos/{incident}/ack:
+    post:
+      tags: [Safety]
+      summary: Operator acknowledges (requires `sos.ack`)
+      responses:
+        '200': { description: Acknowledged }
+        '403': { description: Missing permission }
+
+  /sos/{incident}/close:
+    post:
+      tags: [Safety]
+      summary: Close an incident (reporter, or senior review with a documented reason)
+      responses:
+        '200': { description: Closed }
+        '403': { description: Not the reporter and missing `sos.close` }
+
+  /professionals/onboarding:
+    post:
+      tags: [Professionals]
+      summary: Submit a professional profile (always starts `pending`)
+      responses:
+        '201': { description: Profile created pending verification }
+
+  /professionals/credentials:
+    post:
+      tags: [Professionals]
+      summary: Submit a credential (stored encrypted, starts `pending`)
+      responses:
+        '201': { description: Credential created }
+
+  /professional-credentials/{credential}/review:
+    post:
+      tags: [Professionals]
+      summary: Reviewer verdict on a credential (requires `professionals.review`)
+      description: >
+        Approving a licence does not approve any service. Service-level permission is a
+        separate record, so `verified credential != approved to execute a procedure`.
+      responses:
+        '200': { description: Verdict recorded }
+        '403': { description: Missing permission }
+
+  /provider-service-approvals:
+    post:
+      tags: [Professionals]
+      summary: Grant or deny a provider permission for one specific service
+      responses:
+        '200': { description: Approval recorded }
+        '422': { description: Service profession does not match the provider
+
 components:
   securitySchemes:
     bearerAuth:

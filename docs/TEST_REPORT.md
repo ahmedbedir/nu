@@ -33,7 +33,7 @@
 
 ## Run 2026-10-25 — Phase 2/3/4 service layer
 
-**Result (cumulative): 49 passed (173 assertions), 0 failed**
+**Result (cumulative): 66 passed (239 assertions), 0 failed**
 
 | Test ID | Suite | What it proves | Result |
 |---|---|---|---|
@@ -67,6 +67,18 @@
 | T-059 | SosTest | Unacknowledged incident escalates automatically past the SLA | PASS |
 | T-060 | SosTest | Senior closure without the reporter requires a documented reason | PASS |
 | — | SosTest | Concurrent incidents are independent | PASS |
+
+## Run 2026-10-25 — HTTP orchestration layer
+
+**17 new tests / 83 assertions. Cumulative: 66 passed, 239 assertions, 0 failed**
+
+| Suite | Coverage | Result |
+|---|---|---|
+| BookingFlowTest | create → fresh-GPS search → provider accept → quote → customer confirm → visit created | PASS |
+| BookingFlowTest | no-match, stale GPS excluded, outside radius excluded, IDOR, unverified address, quote lines | PASS |
+| ProfessionalOnboardingTest | profile/credential start `pending`, licence number stored encrypted, reviewer approval kept separate from service approval | PASS |
+| VisitHttpTest | HTTP arrival claim starts no billing; customer confirmation does; unrelated account denied | PASS |
+| SosHttpTest | ops intake reported delivered while SMS honestly reports failed; close/ACK permission checks | PASS |
 
 ### Browser / HTTP verification — 2026-10-25
 

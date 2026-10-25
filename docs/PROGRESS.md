@@ -50,6 +50,12 @@ Last updated: 2026-10-25
       documented senior closure (T-057…T-060).
 - [~] Service catalog publish/approval HTTP endpoints (engine + schema ready).
 - [~] Red-flag screening endpoint (rules column exists; engine pending).
+- [x] Booking HTTP layer: create, search, quote, confirm; provider accept/decline.
+- [x] Visit HTTP layer: departure, arrival claim, customer confirmation, completion.
+- [x] SOS HTTP layer: intake, honest channel results, ACK, close.
+- [x] Professional onboarding: profile, encrypted credential submission, reviewer verdict,
+      separate service-level approval.
+- [x] Pricing engine: callout, fixed/time service, travel distance, night uplift, commission snapshot.
 
 ## Phase 3 — Live visit + SOS  ✅ (core)
 

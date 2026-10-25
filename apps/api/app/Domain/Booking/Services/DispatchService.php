@@ -13,6 +13,7 @@ use App\Models\DispatchOffer;
 use App\Models\DispatchWave;
 use App\Models\ProfessionalProfile;
 use App\Models\SchedulingReservation;
+use App\Models\Visit;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -194,6 +195,23 @@ class DispatchService
 
             $hold->update(['status' => 'consumed']);
             $locked->update(['state' => 'confirmed', 'confirmed_at' => now()]);
+
+            // The quote the customer agreed to is frozen and marked accepted.
+            $quote = $locked->quotes()->whereKey($quoteId)->first();
+
+            if ($quote) {
+                $quote->update(['status' => 'accepted', 'accepted_at' => now()]);
+            }
+
+            // The visit record is created at confirmation; it starts in 'scheduled'
+            // and only reaches 'in_session' through the two-sided check-in.
+            Visit::firstOrCreate(
+                ['booking_id' => $locked->id],
+                [
+                    'professional_profile_id' => $locked->professional_profile_id,
+                    'state' => 'scheduled',
+                ],
+            );
 
             BookingEvent::create([
                 'booking_id' => $locked->id,

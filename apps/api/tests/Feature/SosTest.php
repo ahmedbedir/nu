@@ -74,7 +74,10 @@ class SosTest extends TestCase
 
         $this->assertNotNull($smsAttempt);
         $this->assertSame('failed', $smsAttempt->status, 'a log-only adapter must never report delivered');
-        $this->assertFalse($result['delivered']);
+        $this->assertFalse($result['sms_delivered'], 'the SMS channel must not claim delivery');
+        // Ops intake is a separate, genuine delivery.
+        $this->assertTrue($result['delivered']);
+        $this->assertSame('notified_ops', $incident->fresh()->state);
     }
 
     public function test_T059_unacknowledged_incident_escalates_automatically(): void

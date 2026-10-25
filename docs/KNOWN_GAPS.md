@@ -14,22 +14,23 @@ Nothing here is presented to users as working.
 
 ## Not yet implemented (schema exists, behaviour pending)
 
-- **Provider onboarding HTTP endpoints** — credential submission, document upload,
-  review verdicts. Engine (`ProviderEligibility`) and schema are done.
 - **Catalog publish/approval endpoint** — only a licensed medical reviewer may publish.
   Currently `homecare:seed-catalog` creates drafts and `--publish` is a local preview flag.
 - **Eligibility screening endpoint** — red-flag rules are stored in `hc_services.red_flag_screen`
   but no endpoint evaluates them into `eligible / requires_information / rejected_red_flag`.
-- **Booking HTTP endpoints** — create booking, open wave, accept offer, customer confirm.
-  `DispatchService` is complete and tested; only the HTTP layer is missing.
-- **Visit HTTP endpoints** — depart/arrive/confirm/complete. `VisitSessionService` is done.
-- **SOS HTTP endpoints** — `SosService` is done; no controller yet.
-- **Pricing engine** — min-30-minute, night/holiday uplift, travel-per-km, overrun cap.
 - **Refund + dispute workflows** with two-person approval.
 - **Live operations stream** — the admin room renders an explicit "not connected" state
   rather than fake data. Needs an authenticated Reverb/SSE channel (T-061).
 - **Admin staff-role gate** — the admin SPA authenticates with a normal token. A staff
   role/permission check on the API side is required before the room is reachable.
+
+Implemented since the previous gap report:
+
+- Provider onboarding, credential submission/review and service-level approval endpoints.
+- Booking create/search/quote/confirm and provider offer accept/decline endpoints.
+- Visit departure/arrival/customer-confirmation/completion endpoints.
+- SOS create/ack/close endpoints with honest per-channel delivery status.
+- Pricing engine with callout, procedure/time, travel and night uplift lines.
 
 ## Test coverage gaps (from `07_TEST_SCENARIOS.md`)
 
