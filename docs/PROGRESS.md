@@ -48,8 +48,9 @@ Last updated: 2026-10-25
       settles; cash disagreement → dispute (T-045/T-046/T-047).
 - [x] **SOS** — durable intake, honest delivery status, separate ACK/RESOLVE, auto-escalation,
       documented senior closure (T-057…T-060).
-- [~] Service catalog publish/approval HTTP endpoints (engine + schema ready).
-- [~] Red-flag screening endpoint (rules column exists; engine pending).
+- [x] Service catalog publish/suspend with reviewer permission and version snapshots.
+- [x] Clinical screening engine (eligible / requires_information / review / red flag).
+- [~] Screening is not yet invoked from booking creation (engine tested standalone).
 - [x] Booking HTTP layer: create, search, quote, confirm; provider accept/decline.
 - [x] Visit HTTP layer: departure, arrival claim, customer confirmation, completion.
 - [x] SOS HTTP layer: intake, honest channel results, ACK, close.

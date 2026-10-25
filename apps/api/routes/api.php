@@ -4,6 +4,9 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\HealthController;
 use App\Http\Controllers\Api\PatientController;
 use App\Http\Controllers\Api\BookingController;
+use App\Http\Controllers\Api\CatalogController;
+use App\Http\Controllers\Api\ConsentController;
+use App\Http\Controllers\Api\FinanceController;
 use App\Http\Controllers\Api\ProfessionalController;
 use App\Http\Controllers\Api\ProviderOfferController;
 use App\Http\Controllers\Api\ServiceController;
@@ -65,6 +68,22 @@ Route::prefix('v1')->group(function () {
         Route::post('professionals/credentials', [ProfessionalController::class, 'storeCredential']);
         Route::post('professional-credentials/{credential}/review', [ProfessionalController::class, 'reviewCredential']);
         Route::post('provider-service-approvals', [ProfessionalController::class, 'approveService']);
+
+        // Consent (purpose-specific, revocable)
+        Route::post('consents', [ConsentController::class, 'store']);
+        Route::post('consents/{consent}/revoke', [ConsentController::class, 'revoke']);
+
+        // Finance: cash attestation, refunds, disputes
+        Route::post('invoices/{invoice}/cash-attestation', [FinanceController::class, 'cashAttestation']);
+        Route::post('invoices/{invoice}/disputes', [FinanceController::class, 'openDispute']);
+        Route::post('refund-requests', [FinanceController::class, 'requestRefund']);
+
+        // Back office — staff-scoped roles only
+        Route::middleware('staff')->prefix('admin')->group(function () {
+            Route::post('catalog/services/{service}/publish', [CatalogController::class, 'publish']);
+            Route::post('catalog/services/{service}/suspend', [CatalogController::class, 'suspend']);
+            Route::post('finance/refunds/{refund}/approve', [FinanceController::class, 'approveRefund']);
+        });
 
         Route::post('patients/{patient}/delegations', [PatientController::class, 'grantDelegation']);
         Route::delete('patients/{patient}/delegations/{delegation}', [PatientController::class, 'revokeDelegation']);

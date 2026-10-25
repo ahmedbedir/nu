@@ -14,15 +14,12 @@ Nothing here is presented to users as working.
 
 ## Not yet implemented (schema exists, behaviour pending)
 
-- **Catalog publish/approval endpoint** — only a licensed medical reviewer may publish.
-  Currently `homecare:seed-catalog` creates drafts and `--publish` is a local preview flag.
-- **Eligibility screening endpoint** — red-flag rules are stored in `hc_services.red_flag_screen`
-  but no endpoint evaluates them into `eligible / requires_information / rejected_red_flag`.
-- **Refund + dispute workflows** with two-person approval.
 - **Live operations stream** — the admin room renders an explicit "not connected" state
   rather than fake data. Needs an authenticated Reverb/SSE channel (T-061).
-- **Admin staff-role gate** — the admin SPA authenticates with a normal token. A staff
-  role/permission check on the API side is required before the room is reachable.
+- **Eligibility screening is not yet called from the booking endpoint** — the engine is
+  built and tested, but `BookingController@store` does not run it yet. Wiring it in must
+  also decide the customer-facing UX for `requires_information`.
+- **Refund approval HTTP path is staff-gated but the admin SPA has no finance screen yet.**
 
 Implemented since the previous gap report:
 
@@ -31,6 +28,13 @@ Implemented since the previous gap report:
 - Visit departure/arrival/customer-confirmation/completion endpoints.
 - SOS create/ack/close endpoints with honest per-channel delivery status.
 - Pricing engine with callout, procedure/time, travel and night uplift lines.
+- Clinical screening engine: eligible / requires_information / requires_qualified_review /
+  rejected_red_flag, with age gating and no AI-generated clinical content.
+- Catalog publish/suspend with reviewer permission and immutable version snapshots.
+- Refund workflow: collected-amount ceiling, credit consent, self-approval block, dual
+  approval above EGP 500, balanced compensating journal.
+- Purpose-specific consent endpoints (grant/revoke).
+- `staff` middleware so back-office routes reject customer tokens before permission checks.
 
 ## Test coverage gaps (from `07_TEST_SCENARIOS.md`)
 

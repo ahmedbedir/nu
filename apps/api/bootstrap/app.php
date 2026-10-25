@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use App\Http\Middleware\EnsureStaff;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -17,6 +18,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->redirectGuestsTo(
             fn ($request) => $request->is('api/*') ? null : '/login'
         );
+
+        // Back-office surfaces require a staff-scoped role, not just a valid token.
+        $middleware->alias(['staff' => EnsureStaff::class]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         // Every /api/* response is JSON: 401 for guests, 422 for validation,

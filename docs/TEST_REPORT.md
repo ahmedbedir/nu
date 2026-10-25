@@ -80,6 +80,30 @@
 | VisitHttpTest | HTTP arrival claim starts no billing; customer confirmation does; unrelated account denied | PASS |
 | SosHttpTest | ops intake reported delivered while SMS honestly reports failed; close/ACK permission checks | PASS |
 
+## Run 2026-10-25 — Clinical governance and finance controls
+
+**17 new tests / 40 assertions. Cumulative: 83 passed, 279 assertions, 0 failed**
+
+| Test ID | Suite | What it proves | Result |
+|---|---|---|---|
+| T-015 | ClinicalScreeningTest | Hard red flag stops dispatch and returns emergency guidance, no diagnosis | PASS |
+| T-008 | ClinicalScreeningTest | `UNKNOWN` is explicit, blocks execution, does not fabricate a value | PASS |
+| — | ClinicalScreeningTest | Missing mandatory field is reported, never assumed false | PASS |
+| — | ClinicalScreeningTest | Complete answers on a simple service are eligible | PASS |
+| — | ClinicalScreeningTest | Soft rule routes to qualified review, not rejection | PASS |
+| T-017 | ClinicalScreeningTest | Age outside the approved range is rejected | PASS |
+| — | ClinicalScreeningTest | Paediatric range allows a child inside it | PASS |
+| T-014 | CatalogGovernanceTest | Non-reviewer cannot publish | PASS |
+| T-014 | CatalogGovernanceTest | Reviewer publish freezes a version snapshot | PASS |
+| AC-03 | CatalogGovernanceTest | Suspension needs a reason and hides the service from the public catalog | PASS |
+| AC-11 | CatalogGovernanceTest | Staff middleware rejects a customer token before permissions | PASS |
+| AC-09 | RefundGovernanceTest | Refund above collected amount is refused | PASS |
+| T-054 | RefundGovernanceTest | Credit refund requires explicit consent | PASS |
+| T-054 | RefundGovernanceTest | Credit refund works with recorded consent | PASS |
+| T-055 | RefundGovernanceTest | Requester cannot approve their own refund | PASS |
+| T-055 | RefundGovernanceTest | Large refund requires a second, different approver | PASS |
+| T-048 | RefundGovernanceTest | Approved refund posts a balanced compensating journal | PASS |
+
 ### Browser / HTTP verification — 2026-10-25
 
 | Surface | Command / URL | Result |

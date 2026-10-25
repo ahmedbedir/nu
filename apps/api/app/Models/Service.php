@@ -70,13 +70,16 @@ class Service extends Model
             return true;
         }
 
-        [$min, $max] = $this->allowed_age_range + [null, null];
+        // The range is stored as {min, max}; a list form [min, max] is also accepted.
+        $range = $this->allowed_age_range;
+        $min = $range['min'] ?? $range[0] ?? null;
+        $max = $range['max'] ?? $range[1] ?? null;
 
-        if ($min !== null && $age < $min) {
+        if ($min !== null && $age < (int) $min) {
             return false;
         }
 
-        if ($max !== null && $age > $max) {
+        if ($max !== null && $age > (int) $max) {
             return false;
         }
 
