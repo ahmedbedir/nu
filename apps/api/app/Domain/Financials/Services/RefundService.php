@@ -3,6 +3,7 @@
 namespace App\Domain\Financials\Services;
 
 use App\Domain\Compliance\Services\AuditLogger;
+use App\Domain\Shared\Exceptions\DomainRuleException;
 use App\Models\AdminApproval;
 use App\Models\Invoice;
 use App\Models\LedgerAccount;
@@ -33,17 +34,17 @@ class RefundService
     public function request(Invoice $invoice, string $amount, string $method, string $reason, User $requester): Refund
     {
         if (bccomp($amount, '0.00', 2) <= 0) {
-            throw new \DomainException('مبلغ الاسترداد يجب أن يكون أكبر من صفر');
+            throw DomainRuleException::invalid('refund_amount_invalid', 'مبلغ الاسترداد يجب أن يكون أكبر من صفر');
         }
 
         $collected = $this->collectedTotal($invoice);
 
         if (bccomp($amount, $collected, 2) > 0) {
-            throw new \DomainException('لا يمكن استرداد مبلغ أكبر من المحصّل فعليًا');
+            throw DomainRuleException::invalid('refund_exceeds_collected', 'لا يمكن استرداد مبلغ أكبر من المحصّل فعليًا');
         }
 
         if ($method === 'credit' && ! $this->customerConsentedToCredit($invoice)) {
-            throw new \DomainException('الاسترداد كرصيد يتطلب موافقة صريحة من العميل');
+            throw DomainRuleException::invalid('credit_refund_consent_required', 'الاسترداد كرصيد يتطلب موافقة صريحة من العميل');
         }
 
         $refund = Refund::create([
@@ -70,26 +71,26 @@ class RefundService
     public function approve(Refund $refund, User $approver, ?User $secondApprover = null): Refund
     {
         if (! $approver->hasPermission('finance.approve_refund')) {
-            throw new \DomainException('اعتماد الاسترداد يتطلب صلاحية المدير المالي');
+            throw DomainRuleException::forbidden('refund_approval_forbidden', 'اعتماد الاسترداد يتطلب صلاحية المدير المالي');
         }
 
         if ((int) $refund->requested_by === (int) $approver->id) {
-            throw new \DomainException('لا يمكن للموظف اعتماد طلب استرداد قدّمه بنفسه');
+            throw DomainRuleException::forbidden('self_approval_forbidden', 'لا يمكن للموظف اعتماد طلب استرداد قدّمه بنفسه');
         }
 
         $needsSecond = bccomp((string) $refund->amount, self::DUAL_APPROVAL_THRESHOLD, 2) >= 0;
 
         if ($needsSecond) {
             if (! $secondApprover) {
-                throw new \DomainException('المبلغ يتطلب موافقة ثانية من مدير آخر');
+                throw DomainRuleException::invalid('second_approval_required', 'المبلغ يتطلب موافقة ثانية من مدير آخر');
             }
 
             if ((int) $secondApprover->id === (int) $approver->id) {
-                throw new \DomainException('الموافقة الثانية يجب أن تكون من شخص مختلف');
+                throw DomainRuleException::invalid('second_approval_must_differ', 'الموافقة الثانية يجب أن تكون من شخص مختلف');
             }
 
             if (! $secondApprover->hasPermission('finance.approve_refund')) {
-                throw new \DomainException('الموافق الثاني لا يملك صلاحية اعتماد الاسترداد');
+                throw DomainRuleException::forbidden('second_approver_not_permitted', 'الموافق الثاني لا يملك صلاحية اعتماد الاسترداد');
             }
         }
 

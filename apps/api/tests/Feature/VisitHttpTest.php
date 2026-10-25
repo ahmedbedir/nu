@@ -80,7 +80,9 @@ class VisitHttpTest extends TestCase
         [$customer, , $visit] = $this->scenario();
 
         Sanctum::actingAs($customer);
-        $this->postJson("/api/v1/visits/{$visit->public_id}/confirm-arrival")->assertStatus(500);
+        $this->postJson("/api/v1/visits/{$visit->public_id}/confirm-arrival")
+            ->assertStatus(409)
+            ->assertJsonPath('code', 'provider_arrival_required');
     }
 
     public function test_unrelated_account_cannot_drive_the_visit(): void

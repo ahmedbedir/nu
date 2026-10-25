@@ -4,6 +4,7 @@ namespace App\Domain\Visits\Services;
 
 use App\Domain\Compliance\Services\AuditLogger;
 use App\Domain\Geo\Contracts\GeoDistance;
+use App\Domain\Shared\Exceptions\DomainRuleException;
 use App\Models\Visit;
 use App\Models\VisitCheckin;
 use App\Models\VisitTimeEvent;
@@ -35,7 +36,7 @@ class VisitSessionService
         $max = (int) config('homecare.booking.min_advance_minutes');
 
         if ($minutes < 0 || $minutes > max($max, 240)) {
-            throw new \DomainException('قيمة وقت التحرك غير مسموحة');
+            throw DomainRuleException::invalid('departure_eta_invalid', 'قيمة وقت التحرك غير مسموحة');
         }
 
         $visit->update(['state' => 'departing', 'departure_eta' => now()->addMinutes($minutes)]);
@@ -85,7 +86,7 @@ class VisitSessionService
             $locked = Visit::query()->whereKey($visit->id)->lockForUpdate()->firstOrFail();
 
             if ($locked->arrival_claimed_at === null) {
-                throw new \DomainException('لا يمكن تأكيد الوصول قبل تسجيل وصول الممرض');
+                throw DomainRuleException::conflict('provider_arrival_required', 'لا يمكن تأكيد الوصول قبل تسجيل وصول الممرض');
             }
 
             if ($locked->arrival_confirmed_at !== null) {
@@ -135,7 +136,7 @@ class VisitSessionService
             $locked = Visit::query()->whereKey($visit->id)->lockForUpdate()->firstOrFail();
 
             if ($locked->session_started_at !== null) {
-                throw new \DomainException('الجلسة بدأت بالفعل');
+                throw DomainRuleException::conflict('session_already_started', 'الجلسة بدأت بالفعل');
             }
 
             $now = now();
@@ -176,7 +177,7 @@ class VisitSessionService
             $locked = Visit::query()->whereKey($visit->id)->lockForUpdate()->firstOrFail();
 
             if ($locked->session_started_at === null) {
-                throw new \DomainException('لا يمكن إنهاء زيارة لم تبدأ');
+                throw DomainRuleException::conflict('session_not_started', 'لا يمكن إنهاء زيارة لم تبدأ');
             }
 
             $now = now();

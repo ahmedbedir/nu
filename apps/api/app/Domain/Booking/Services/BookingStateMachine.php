@@ -2,6 +2,8 @@
 
 namespace App\Domain\Booking\Services;
 
+use App\Domain\Booking\Exceptions\BookingConflictException;
+
 /**
  * Booking state machine (PRD §3). Invalid transitions are rejected server-side
  * and every accepted transition is written to `hc_booking_events`.
@@ -39,7 +41,7 @@ class BookingStateMachine
     public function assertTransition(string $from, string $to): void
     {
         if (! $this->canTransition($from, $to)) {
-            throw new \DomainException("انتقال غير مسموح في حالة الحجز: {$from} → {$to}");
+            throw BookingConflictException::notReady("{$from} → {$to}");
         }
     }
 

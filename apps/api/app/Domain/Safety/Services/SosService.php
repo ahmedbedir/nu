@@ -4,6 +4,7 @@ namespace App\Domain\Safety\Services;
 
 use App\Domain\Compliance\Services\AuditLogger;
 use App\Domain\Notifications\Contracts\SmsSender;
+use App\Domain\Shared\Exceptions\DomainRuleException;
 use App\Models\SosAcknowledgement;
 use App\Models\SosDeliveryAttempt;
 use App\Models\SosEscalation;
@@ -175,7 +176,7 @@ class SosService
     public function closeBySeniorReview(SosIncident $incident, User $senior, string $reason): SosIncident
     {
         if (trim($reason) === '') {
-            throw new \DomainException('إغلاق الاستغاثة بدون تأكيد المبلّغ يتطلب سببًا موثقًا');
+            throw DomainRuleException::invalid('closure_reason_required', 'إغلاق الاستغاثة بدون تأكيد المبلّغ يتطلب سببًا موثقًا');
         }
 
         return $this->close($incident, $senior, 'senior_review', $reason);

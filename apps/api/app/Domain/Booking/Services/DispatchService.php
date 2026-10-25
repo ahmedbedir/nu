@@ -2,6 +2,7 @@
 
 namespace App\Domain\Booking\Services;
 
+use App\Domain\Booking\Exceptions\BookingConflictException;
 use App\Domain\Booking\Exceptions\OfferNotAvailableException;
 use App\Domain\Booking\Services\BookingStateMachine;
 use App\Domain\Compliance\Services\AuditLogger;
@@ -225,8 +226,8 @@ class DispatchService
         });
 
         return match ($result['error'] ?? null) {
-            'expired' => throw new \DomainException('انتهت مهلة التأكيد، يرجى إعادة المحاولة'),
-            'invalid_state' => throw new \DomainException('لا يمكن تأكيد الحجز في حالته الحالية'),
+            'expired' => throw BookingConflictException::holdExpired(),
+            'invalid_state' => throw BookingConflictException::notReady($locked->state),
             default => $result['booking'],
         };
     }

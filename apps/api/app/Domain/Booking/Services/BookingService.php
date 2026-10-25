@@ -2,10 +2,13 @@
 
 namespace App\Domain\Booking\Services;
 
+use App\Domain\Booking\Exceptions\BookingConflictException;
 use App\Domain\Booking\Exceptions\OfferNotAvailableException;
+use App\Domain\Clinical\Exceptions\ClinicalBlockedException;
 use App\Domain\Clinical\Services\EligibilityScreening;
 use App\Domain\Financials\Services\PricingEngine;
 use App\Domain\Matching\Services\CandidateFinder;
+use App\Domain\Shared\Exceptions\DomainRuleException;
 use App\Models\Booking;
 use App\Models\BookingRequest;
 use App\Models\Patient;
@@ -29,13 +32,14 @@ class BookingService
     public function createRequest(User $customer, Patient $patient, PatientAddress $address, Service $service, array $data): Booking
     {
         if ($service->status !== 'published') {
-            throw new \DomainException('الخدمة غير متاحة للحجز');
+            throw DomainRuleException::conflict('service_not_bookable', 'الخدمة غير متاحة للحجز');
         }
 
         $screening = $this->screening->screen($service, $patient, $data['form_answers'] ?? []);
 
+        // A hard red flag never creates a conventional booking (T-015).
         if ($screening['outcome'] === EligibilityScreening::REJECTED_RED_FLAG) {
-            throw new \DomainException('لا يمكن إنشاء حجز عادي لهذه الحالة: '.$screening['guidance']);
+            throw ClinicalBlockedException::redFlag($screening['reasons'], $screening['missing'], $screening['guidance']);
         }
 
         $this->assertCoordinates($address);
@@ -78,7 +82,7 @@ class BookingService
     public function search(Booking $booking): array
     {
         if (! in_array($booking->state, ['search_pending', 'searching'], true)) {
-            throw new \DomainException('الحجز غير جاهز للبحث أو يحتاج مراجعة قبل المطابقة');
+            throw BookingConflictException::notReady($booking->state);
         }
 
         $radius = (int) config('homecare.dispatch.initial_radius_km', 10);
@@ -102,7 +106,7 @@ class BookingService
     public function price(Booking $booking): \App\Models\BookingQuote
     {
         if (! $booking->professional_profile_id) {
-            throw new \DomainException('لا يوجد ممارس مقبول بعد');
+            throw BookingConflictException::notReady('awaiting_provider');
         }
 
         return $this->pricing->quote($booking);
@@ -111,7 +115,7 @@ class BookingService
     private function assertCoordinates(PatientAddress $address): void
     {
         if (! $address->hasCoordinates() || $address->verification_status !== 'verified') {
-            throw new \DomainException('يجب تأكيد عنوان الزيارة وموقعه قبل البحث');
+            throw DomainRuleException::invalid('visit_address_unverified', 'يجب تأكيد عنوان الزيارة وموقعه قبل البحث');
         }
     }
 }

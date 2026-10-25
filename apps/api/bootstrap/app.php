@@ -3,6 +3,10 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use App\Domain\Booking\Exceptions\BookingConflictException;
+use App\Domain\Booking\Exceptions\OfferNotAvailableException;
+use App\Domain\Clinical\Exceptions\ClinicalBlockedException;
+use App\Domain\Shared\Exceptions\DomainRuleException;
 use App\Http\Middleware\EnsureStaff;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -28,4 +32,54 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->shouldRenderJsonWhen(
             fn ($request) => $request->is('api/*') || $request->expectsJson()
         );
+
+        $exceptions->render(function (ClinicalBlockedException $e, $request) {
+            if (! $request->is('api/*')) {
+                return null;
+            }
+
+            return response()->json([
+                'message' => $e->getMessage(),
+                'code' => 'clinical_blocked',
+                'details' => [
+                    'outcome' => $e->outcome,
+                    'reasons' => $e->reasons,
+                    'missing' => $e->missing,
+                    'guidance' => $e->guidance,
+                ],
+            ], 422);
+        });
+
+        $exceptions->render(function (BookingConflictException $e, $request) {
+            if (! $request->is('api/*')) {
+                return null;
+            }
+
+            return response()->json([
+                'message' => $e->getMessage(),
+                'code' => $e->codeName,
+            ], 409);
+        });
+
+        $exceptions->render(function (OfferNotAvailableException $e, $request) {
+            if (! $request->is('api/*')) {
+                return null;
+            }
+
+            return response()->json([
+                'message' => 'العرض لم يعد متاحًا',
+                'code' => $e->reason,
+            ], 409);
+        });
+
+        $exceptions->render(function (DomainRuleException $e, $request) {
+            if (! $request->is('api/*')) {
+                return null;
+            }
+
+            return response()->json([
+                'message' => $e->getMessage(),
+                'code' => $e->codeName,
+            ], $e->status);
+        });
     })->create();

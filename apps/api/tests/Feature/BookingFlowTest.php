@@ -215,7 +215,7 @@ class BookingFlowTest extends TestCase
             'address_public_id' => $address->public_id,
             'service_public_id' => $service->public_id,
             'required_gender' => 'female',
-        ])->assertStatus(500); // DomainException: address must be verified first
+        ])->assertStatus(422)->assertJsonPath('code', 'visit_address_unverified');
     }
 
     public function test_T015_red_flag_booking_is_refused_outright(): void
@@ -238,8 +238,11 @@ class BookingFlowTest extends TestCase
             'form_answers' => ['chest_pain' => true],
         ]);
 
-        // Conventional booking stops; no booking row is created.
-        $res->assertStatus(500);
+        // Conventional booking stops with a typed clinical response; no row is created.
+        $res->assertStatus(422)
+            ->assertJsonPath('code', 'clinical_blocked')
+            ->assertJsonPath('details.outcome', 'rejected_red_flag')
+            ->assertJsonPath('details.guidance', 'red_flag_emergency_guidance');
         $this->assertDatabaseCount('bookings', 0);
     }
 
@@ -265,7 +268,9 @@ class BookingFlowTest extends TestCase
 
         // It must not be dispatchable until the safety data is supplied.
         $bookingId = $created->json('booking.public_id');
-        $this->postJson("/api/v1/bookings/{$bookingId}/search")->assertStatus(500);
+        $this->postJson("/api/v1/bookings/{$bookingId}/search")
+            ->assertStatus(409)
+            ->assertJsonPath('code', 'booking_not_ready');
     }
 
     public function test_soft_clinical_rule_routes_the_booking_to_review_not_dispatch(): void
@@ -291,7 +296,9 @@ class BookingFlowTest extends TestCase
         $this->assertSame('clinical_review_pending', $created->json('booking.state'));
 
         $bookingId = $created->json('booking.public_id');
-        $this->postJson("/api/v1/bookings/{$bookingId}/search")->assertStatus(500);
+        $this->postJson("/api/v1/bookings/{$bookingId}/search")
+            ->assertStatus(409)
+            ->assertJsonPath('code', 'booking_not_ready');
     }
 
     public function test_quote_contains_callout_and_commission_is_tracked(): void

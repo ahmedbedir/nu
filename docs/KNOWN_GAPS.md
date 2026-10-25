@@ -18,9 +18,8 @@ Nothing here is presented to users as working.
   rather than fake data. Needs an authenticated Reverb/SSE channel (T-061).
 - **Eligibility screening is now called from booking creation** — hard red flags stop
   the conventional booking; UNKNOWN fields create `requires_information`; soft rules
-  create `clinical_review_pending`. The current Laravel exception surface still returns
-  500 for these DomainExceptions; a later API error mapper should return typed 422/409
-  responses with the screening outcome.
+  create `clinical_review_pending`. Typed API responses now return `422 clinical_blocked`
+  with `outcome`, `reasons`, `missing` and `guidance`, or `409 booking_not_ready`.
 - **Refund approval HTTP path is staff-gated but the admin SPA has no finance screen yet.**
 
 Implemented since the previous gap report:

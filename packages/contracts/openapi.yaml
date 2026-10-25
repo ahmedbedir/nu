@@ -187,16 +187,21 @@ paths:
       tags: [Bookings]
       summary: Create a booking request for a patient at a verified visit address
       description: >
-        The deterministic clinical screen runs before the row is created. A hard
-        red flag returns 500 in the current exception surface and creates no booking;
-        UNKNOWN required answers create `requires_information`; soft flags create
+        The deterministic clinical screen runs before the row is created. A hard red
+        flag creates no booking and returns `422 clinical_blocked`; UNKNOWN required
+        answers create `requires_information`; soft flags create
         `clinical_review_pending`; only `search_pending` can dispatch.
-      description: >
         `booking_device_lat/lng` are recorded for audit only and never become the
-        destination. The visit address must be verified and have coordinates.
+        destination: the visit address must be verified and have coordinates.
       responses:
-        '201': { description: Booking created in `search_pending` }
+        '201': { description: Booking created (state depends on the screening outcome) }
         '403': { description: Caller may not book for this patient }
+        '422':
+          description: >
+            Validation error, unverified visit address (`visit_address_unverified`),
+            or a clinical block (`clinical_blocked`) carrying `details.outcome`,
+            `details.reasons`, `details.missing` and `details.guidance`.
+        '409': { description: Service not bookable (`service_not_bookable`) }
 
   /bookings/{booking}/search:
     post:

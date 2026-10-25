@@ -3,6 +3,7 @@
 namespace App\Domain\Clinical\Services;
 
 use App\Domain\Compliance\Services\AuditLogger;
+use App\Domain\Shared\Exceptions\DomainRuleException;
 use App\Models\Service;
 use App\Models\ServiceVersion;
 use App\Models\User;
@@ -22,7 +23,7 @@ class CatalogPublisher
     public function publish(Service $service, User $reviewer, ?string $changeNote = null): Service
     {
         if (! $reviewer->hasPermission('catalog.publish')) {
-            throw new \DomainException('اعتماد نشر الخدمة يتطلب صلاحية المراجع الطبي');
+            throw DomainRuleException::forbidden('catalog_publish_forbidden', 'اعتماد نشر الخدمة يتطلب صلاحية المراجع الطبي');
         }
 
         $this->assertClinicallyComplete($service);
@@ -59,11 +60,11 @@ class CatalogPublisher
     public function suspend(Service $service, User $reviewer, string $reason): Service
     {
         if (! $reviewer->hasPermission('catalog.publish')) {
-            throw new \DomainException('تعليق الخدمة يتطلب صلاحية المراجع الطبي');
+            throw DomainRuleException::forbidden('catalog_suspend_forbidden', 'تعليق الخدمة يتطلب صلاحية المراجع الطبي');
         }
 
         if (trim($reason) === '') {
-            throw new \DomainException('تعليق خدمة منشورة يتطلب سببًا موثقًا');
+            throw DomainRuleException::invalid('suspend_reason_required', 'تعليق خدمة منشورة يتطلب سببًا موثقًا');
         }
 
         $service->update(['status' => 'suspended']);
@@ -97,7 +98,7 @@ class CatalogPublisher
         }
 
         if ($missing !== []) {
-            throw new \DomainException('لا يمكن نشر خدمة غير مكتملة: '.implode(', ', $missing));
+            throw DomainRuleException::invalid('catalog_incomplete', 'لا يمكن نشر خدمة غير مكتملة: '.implode(', ', $missing));
         }
     }
 
