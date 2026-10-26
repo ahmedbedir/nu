@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"inverse-primary":"#a3c9ff","primary":"#004f8d","on-surface-variant":"#414751","surface-container-high":"#e5e9ec","outline":"#717782","on-tertiary-container":"#7efbc5","secondary":"#47607d","surface":"#f6fafd","on-background":"#171c1f","surface-bright":"#f6fafd","on-primary":"#ffffff","surface-dim":"#d6dbdd","on-tertiary-fixed":"#002114","background":"#f6fafd","secondary-container":"#c2dcfe","secondary-fixed":"#d1e4ff","on-primary-container":"#d5e4ff","primary-fixed":"#d3e4ff","on-secondary-fixed":"#001d35","on-secondary-container":"#48617e","inverse-surface":"#2c3134","surface-variant":"#dfe3e6","surface-container-lowest":"#ffffff","on-tertiary-fixed-variant":"#005138","primary-fixed-dim":"#a3c9ff","primary-container":"#1267b2","on-secondary":"#ffffff","tertiary":"#00593e","inverse-on-surface":"#edf1f4","tertiary-fixed-dim":"#5fdca9","outline-variant":"#c1c7d3","surface-tint":"#0060aa","on-tertiary":"#ffffff","error":"#ba1a1a","error-container":"#ffdad6","surface-container":"#eaeef1","surface-container-highest":"#dfe3e6","tertiary-container":"#007451","on-error-container":"#93000a","surface-container-low":"#f0f4f7","on-primary-fixed-variant":"#004882","secondary-fixed-dim":"#afc9ea","on-primary-fixed":"#001c38","tertiary-fixed":"#7df9c4","on-secondary-fixed-variant":"#2f4964","on-surface":"#171c1f","on-error":"#ffffff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter-md":"1.5rem","space-sm":"0.5rem","space-xl":"2rem","gutter":"1rem","margin":"1rem","gutter-lg":"2rem","space-md":"1rem","space-lg":"1.5rem","space-xs":"0.25rem","margin-lg":"2.5rem","margin-md":"1.5rem"},"fontFamily":{"headline-md-mobile":["IBM Plex Sans"],"label-lg":["IBM Plex Sans"],"headline-lg":["IBM Plex Sans"],"body-md":["IBM Plex Sans"],"body-sm":["IBM Plex Sans"],"headline-md":["IBM Plex Sans"],"headline-lg-mobile":["IBM Plex Sans"],"headline-sm":["IBM Plex Sans"],"label-sm":["IBM Plex Sans"],"display-hero-mobile":["IBM Plex Sans"],"body-lg":["IBM Plex Sans"],"display-hero":["IBM Plex Sans"],"label-md":["IBM Plex Sans"]},"fontSize":{"headline-md-mobile":["1.25rem",{"lineHeight":"1.875rem","fontWeight":"600"}],"label-lg":["1rem",{"lineHeight":"1.5rem","fontWeight":"600"}],"headline-lg":["2rem",{"lineHeight":"2.75rem","fontWeight":"700"}],"body-md":["1rem",{"lineHeight":"1.625rem","fontWeight":"400"}],"body-sm":["0.875rem",{"lineHeight":"1.375rem","fontWeight":"400"}],"headline-md":["1.5rem",{"lineHeight":"2.25rem","fontWeight":"600"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"2.25rem","fontWeight":"600"}],"headline-sm":["1.25rem",{"lineHeight":"1.875rem","fontWeight":"600"}],"label-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"600"}],"display-hero-mobile":["2rem",{"lineHeight":"2.75rem","fontWeight":"700"}],"body-lg":["1.125rem",{"lineHeight":"1.75rem","fontWeight":"400"}],"display-hero":["2.75rem",{"lineHeight":"3.5rem","fontWeight":"700"}],"label-md":["0.875rem",{"lineHeight":"1.25rem","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin-lg flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-xl"><div class="flex items-center gap-space-sm"><div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[24px]">medical_services</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">هوم كير مصر</span><span class="font-label-sm text-label-sm text-on-surface-variant">منظومة الرعاية الصحية المنزلية</span></div></div><nav class="hidden lg:flex items-center gap-space-md" data-active-classes="bg-primary-container text-on-primary font-label-md text-label-md px-space-md py-space-xs rounded-lg"><a aria-current="page" class="transition-colors bg-primary-container text-on-primary font-label-md text-label-md px-space-md py-space-xs rounded-lg" data-path="public-explorer" href="#">استكشاف الخدمات المنزلية</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors px-space-md py-space-xs" data-path="care-specialties" href="#">التخصصات الطبية</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors px-space-md py-space-xs" data-path="syndicate-verification" href="#">التحقق والاعتماد الطبي</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors px-space-md py-space-xs" data-path="emergency-dispatch-info" href="#">بروتوكول الطوارئ</a></nav></div><div class="flex items-center gap-space-md"><button class="flex items-center gap-space-xs bg-error text-on-error px-space-md py-space-xs rounded-lg font-label-md text-label-md shadow-[0_0_12px_rgba(186,26,26,0.3)] hover:opacity-95 transition-opacity" type="button"><span class="material-symbols-outlined text-[20px]">e911_emergency</span><span>طلب طوارئ فوري</span></button><div class="flex items-center gap-space-sm ps-space-md"><div class="hidden sm:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface">زائر البوابة</span><span class="font-label-sm text-label-sm text-on-surface-variant">القاهرة الكبرى</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<!-- Interactive Hero & Quick Service Triage Section -->
+<section class="relative w-full overflow-hidden bg-gradient-to-b from-surface-container-low via-surface to-surface pb-space-xl pt-space-lg">
+<div class="max-w-7xl mx-auto px-margin-lg">
+<!-- Clinical Credential Top Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pb-space-lg">
+<div class="flex items-center gap-space-sm bg-surface-container-lowest px-space-md py-space-xs rounded-full shadow-sm">
+<span class="inline-flex items-center justify-center w-2.5 h-2.5 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-tertiary">منظومة معتمدة رسمياً • ترخيص نقابة التمريض المصرية #2025/14</span>
+</div>
+<div class="flex items-center gap-space-lg text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-tertiary">verified</span> قانون المسؤولية الطبية رقم 13 لسنة 2025</span>
+<span class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[16px] text-primary">security</span> حماية البيانات طبقاً للقانون 151 لسنة 2020</span>
+</div>
+</div>
+<!-- Main Hero Content Split -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center pt-space-sm">
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">local_hospital</span>
+<span>بوابة الاستكشاف العامة • حرية الوصول الشفاف للمواطنين</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface leading-tight">
+            الرعاية التمريضية والسريرية المنزلية الأولى <span class="text-primary underline decoration-primary/30 underline-offset-8">المعتمدة نقابياً</span> في مصر
+          </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+            استكشف الكوادر التمريضية المرخصة من وزارة الصحة ونقابة التمريض مع نظام تحقق رقمي لحظي. تسعير عادل محكم بالدقيقة دون رسوم خفية، وأعلى معايير مكافحة العدوى والتعامل مع المخلفات الطبية في منزلك.
+          </p>
+<!-- Fast Live Statistics Ribbon -->
+<div class="grid grid-cols-3 gap-space-md pt-space-xs pb-space-sm">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col">
+<span class="font-headline-md text-headline-md text-primary font-bold">18-24</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">دقيقة متوسط زمن الوصول</span>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col">
+<span class="font-headline-md text-headline-md text-tertiary font-bold">1,480+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ممارس مرخص بالنقابة</span>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col">
+<span class="font-headline-md text-headline-md text-secondary font-bold">100%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">تحقق رقمي مزدوج بالحضور</span>
+</div>
+</div>
+</div>
+<!-- Clinical Imagery / Visual Showcase Card -->
+<div class="lg:col-span-5 relative">
+<div class="relative w-full h-80 rounded-2xl overflow-hidden shadow-lg bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A professional licensed Egyptian female nurse wearing sterile clinical medical scrubs with a stethoscope and medical kit providing compassionate home healthcare to an elderly patient in a modern well-lit living room in Cairo Egypt, soft natural sunlight, hospital-grade equipment, clean sterile ambiance, calm trustworthy atmosphere, high resolution photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVifBKtag_n6U0LeXOlnvw7P2-rZGcnSShddjMfN9c6FEfWoioHTQyIszbVM0IRx8MQz7BdKa8gyQHTGMlG73ARYVcxWCxPksfsXXyQaKplRxk2cFvWATrVOaM04ezjQB7ew91Gdnzyh2_1QrIZsOgZAT9bQ0scvraeGal6mQGJhFimz_9d1TOzO9YbEZpO319czE0J4nfg4CO4iR-cfyC0k8dJD2o_by_A4F5hT6ehFTmHIK37TYZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex flex-col justify-end p-space-md text-on-primary">
+<div class="flex items-center gap-space-xs font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px] text-on-tertiary-container">health_and_safety</span>
+<span>زيارات بروتوكولية معقمة بالكامل</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-primary-container">مجهّزون بحقائب الطوارئ وحاويات التخلص الآمن من الأدوات الحادة (Sharps Container).</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Exploration Search Bar (No Login Required) -->
+<div class="mt-space-xl bg-surface-container-lowest p-space-lg rounded-2xl shadow-md">
+<div class="flex items-center justify-between pb-space-md">
+<div class="flex items-center gap-space-xs text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">search_check</span>
+<span>استكشاف فوري للخدمات والنطاق المتاح حولك الآن</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary bg-tertiary/10 px-space-sm py-space-xs rounded-full">استكشاف مجاني متاح للجميع</span>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-12 gap-space-md" id="public-explore-form" onsubmit="event.preventDefault(); handleExploreSearch();">
+<div class="md:col-span-4 flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="service-select">نوع الإجراء أو الخدمة السريرية</label>
+<div class="relative">
+<select class="w-full h-12 bg-surface-container-low px-space-md rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none" id="service-select">
+<option value="infusion">تركيب محاليل وريدية ومتابعة الجرعات</option>
+<option value="wound">غيار جراحي معقم وتنظيف قرح الفراش</option>
+<option value="elderly">رعاية سريرية وتمريضية شاملة لكبار السن</option>
+<option value="injection">حقن عضلي / وريدي ومضادات حيوية</option>
+<option value="catheter">تركيب وتغيير القسطرة البولية والأنبوب المعدي</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute left-3 top-3 text-outline">expand_more</span>
+</div>
+</div>
+<div class="md:col-span-3 flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="gov-select">المحافظة</label>
+<div class="relative">
+<select class="w-full h-12 bg-surface-container-low px-space-md rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none" id="gov-select" onchange="updateDistrictOptions()">
+<option value="cairo">القاهرة الكبرى</option>
+<option value="giza">الجيزة</option>
+<option value="alex">الإسكندرية</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute left-3 top-3 text-outline">location_city</span>
+</div>
+</div>
+<div class="md:col-span-3 flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="district-select">الحي أو المنطقة الجغرافية</label>
+<div class="relative">
+<select class="w-full h-12 bg-surface-container-low px-space-md rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none" id="district-select">
+<option value="maadi">المعادي ودجلة</option>
+<option value="tagamoa">القاهرة الجديدة والتجمع الخامس</option>
+<option value="nasrcity">مدينة نصر ومصر الجديدة</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute left-3 top-3 text-outline">pin_drop</span>
+</div>
+</div>
+<div class="md:col-span-2 flex items-end">
+<button class="w-full h-12 bg-primary text-on-primary rounded-lg font-label-md text-label-md flex items-center justify-center gap-space-xs shadow-sm hover:bg-primary-container transition-all" type="submit">
+<span class="material-symbols-outlined text-[18px]">travel_explore</span>
+<span>فحص التغطية</span>
+</button>
+</div>
+</form>
+<div class="hidden mt-space-md p-space-md bg-tertiary/10 text-tertiary rounded-lg font-body-sm text-body-sm flex items-center justify-between" id="search-alert">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span id="search-alert-text">التغطية متاحة بالكامل في هذه المنطقة: 14 ممرضاً وممرضة نشطون حالياً ضمن نطاق 5 كم.</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold">وقت وصول تقديري: 15 دقيقة</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Transparent Pricing Calculator Section (Decrees #92, #186, #187, #188) -->
+<section class="w-full py-space-xl bg-surface">
+<div class="max-w-7xl mx-auto px-margin-lg">
+<div class="flex flex-col gap-space-xs pb-space-lg">
+<div class="flex items-center gap-space-xs text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">calculate</span>
+<span>محاكي الأسعار الموحد والمعتمد</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">حاسبة التكلفة التقديرية الشفافة</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          التزاماً بالقرارات المنظمة للأجور الطبية رقم #92 و#186 و#187؛ يتم احتساب رسم الزيارة الأساسي مع احتساب أول 30 دقيقة، ثم بالدقيقة الواحدة بكل شفافية، مع تطبيق معايير الزيارة الليلية المعتمدة.
+        </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<!-- Interactive Form Elements -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col gap-space-lg">
+<!-- Step 1: Base Clinical Visit Selection -->
+<div class="flex flex-col gap-space-sm">
+<label class="font-label-md text-label-md text-on-surface">1. اختر نوع الإجراء التمريضي الأساسي</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<label class="cursor-pointer bg-surface p-space-md rounded-xl flex items-start gap-space-sm has-[:checked]:bg-primary/5">
+<input checked="" class="mt-1 text-primary focus:ring-primary" data-label="حقن وريدي أو عضلي سريري" name="calc-proc" onchange="calculateLiveEstimate()" type="radio" value="180"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">حقن عضلي / وريدي</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">شامل السرنجة والتعقيم ومراقبة الحساسية</span>
+<span class="font-label-sm text-label-sm text-primary mt-space-xs">180 ج.م أساسي</span>
+</div>
+</label>
+<label class="cursor-pointer bg-surface p-space-md rounded-xl flex items-start gap-space-sm has-[:checked]:bg-primary/5">
+<input class="mt-1 text-primary focus:ring-primary" data-label="تركيب كانيولا ومحاليل وريدية" name="calc-proc" onchange="calculateLiveEstimate()" type="radio" value="260"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">محاليل وتركيب كانيولا</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">مراقبة معدل التنقيط وتثبيت آمن</span>
+<span class="font-label-sm text-label-sm text-primary mt-space-xs">260 ج.م أساسي</span>
+</div>
+</label>
+<label class="cursor-pointer bg-surface p-space-md rounded-xl flex items-start gap-space-sm has-[:checked]:bg-primary/5">
+<input class="mt-1 text-primary focus:ring-primary" data-label="غيار جراحي معقد أو قرح فراش" name="calc-proc" onchange="calculateLiveEstimate()" type="radio" value="320"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">غيار جراحي معقم</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">تطهير بمطهرات جراحية متطورة</span>
+<span class="font-label-sm text-label-sm text-primary mt-space-xs">320 ج.م أساسي</span>
+</div>
+</label>
+<label class="cursor-pointer bg-surface p-space-md rounded-xl flex items-start gap-space-sm has-[:checked]:bg-primary/5">
+<input class="mt-1 text-primary focus:ring-primary" data-label="رعاية تمريضية مكثفة وقسطرة" name="calc-proc" onchange="calculateLiveEstimate()" type="radio" value="450"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">تركيب قسطرة / أنبوب رايل</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">إجراء معقم بممرض تخصص عناية مركزة</span>
+<span class="font-label-sm text-label-sm text-primary mt-space-xs">450 ج.م أساسي</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Step 2: Estimated Duration Slider -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface" for="duration-range">2. المدة الزمنية المقدرة للتواجد بالمنزل</label>
+<span class="font-label-md text-label-md text-primary bg-primary/10 px-space-sm py-space-xs rounded-md" id="duration-display">30 دقيقة (الحد الأدنى للزيارة)</span>
+</div>
+<input class="w-full accent-primary bg-surface-container-high h-2 rounded-lg cursor-pointer" id="duration-range" max="180" min="30" oninput="calculateLiveEstimate()" step="15" type="range" value="30"/>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>30 دقيقة (حد أدنى)</span>
+<span>60 دقيقة</span>
+<span>120 دقيقة</span>
+<span>180 دقيقة (3 ساعات)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              * بموجب القرار #187: أول 30 دقيقة مشمولة في الرسوم التشغيلية، وكل دقيقة إضافية تحتسب بـ 2.50 ج.م فقط لضمان حق المريض والممارس.
+            </p>
+</div>
+<!-- Step 3: Timing & Night Shift Toggles -->
+<div class="flex flex-col gap-space-sm">
+<label class="font-label-md text-label-md text-on-surface">3. توقيت الزيارة والخدمات التخصصية</label>
+<div class="flex flex-col gap-space-sm">
+<label class="flex items-center justify-between p-space-md bg-surface rounded-xl cursor-pointer">
+<div class="flex items-center gap-space-sm">
+<input class="w-5 h-5 text-primary rounded focus:ring-primary" id="night-shift-check" onchange="calculateLiveEstimate()" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">فترة مسائية / ليلية طارئة (10:00 م - 07:00 ص)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">زيادة رسم المناوبة الليلية بنسبة 25% طبقاً للقرار #188</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container px-space-sm py-space-xs rounded-md">+25%</span>
+</label>
+<label class="flex items-center justify-between p-space-md bg-surface rounded-xl cursor-pointer">
+<div class="flex items-center gap-space-sm">
+<input checked="" class="w-5 h-5 text-tertiary rounded" disabled="" id="sterile-kit-check" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">حقيبة التعقيم ومستلزمات التخلص من النفايات الحادة</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">إلزامية ومجانية بالكامل وفق بروتوكول مكافحة العدوى</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary bg-tertiary/10 px-space-sm py-space-xs rounded-md">مشمولة 0 ج.م</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Cost Breakdown Invoice-style Card -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col justify-between h-full">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b border-surface-container pb-space-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface">التفصيل المحاسبي التقديري</span>
+<span class="font-label-sm text-label-sm text-tertiary bg-tertiary/10 px-space-sm py-space-xs rounded">تسعير رسمي معتمد</span>
+</div>
+<!-- Itemized table -->
+<div class="flex flex-col gap-space-sm font-body-sm text-body-sm">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span id="inv-proc-name">حقن عضلي / وريدي سريري</span>
+<span class="font-semibold text-on-surface" id="inv-proc-cost">180.00 ج.م</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>رسوم الانتقال والكشف الأولي (أول 30 دقيقة)</span>
+<span class="font-semibold text-on-surface">70.00 ج.م</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span id="inv-extra-mins-label">الوقت الإضافي (0 دقيقة)</span>
+<span class="font-semibold text-on-surface" id="inv-extra-mins-cost">0.00 ج.م</span>
+</div>
+<div class="hidden flex justify-between items-center text-secondary" id="inv-night-row">
+<span>بدل مناوبة ليلية معتمدة (القرار 188)</span>
+<span class="font-semibold" id="inv-night-cost">0.00 ج.م</span>
+</div>
+<div class="flex justify-between items-center text-tertiary">
+<span>حاوية المخلفات الطبية والتعقيم المعتمد</span>
+<span class="font-semibold">0.00 ج.م (مجاناً)</span>
+</div>
+</div>
+</div>
+<!-- Total Box with EGP Tafqeet -->
+<div class="mt-space-lg pt-space-md bg-surface-container-low p-space-md rounded-xl flex flex-col gap-space-xs">
+<div class="flex items-baseline justify-between">
+<span class="font-label-md text-label-md text-on-surface">الإجمالي التقديري الأقصى:</span>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-hero text-headline-lg text-primary font-bold" id="total-amount-display">250</span>
+<span class="font-label-md text-label-md text-primary">جنيه مصري</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-body-sm text-body-sm text-on-surface-variant" id="tafqeet-display">فقط مائتان وخمسون جنيهاً مصرياً لا غير.</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm pt-space-xs">
+<span class="material-symbols-outlined text-[16px] text-tertiary">lock</span>
+<span>لا يحق للممارس المطالبة بأي مبالغ إضافية نقدية غير مدونة بالفاتورة.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Live Governorates Coverage Simulator & Geographical Map (Decrees #11, #107, #230) -->
+<section class="w-full py-space-xl bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-margin-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-lg">
+<div>
+<div class="flex items-center gap-space-xs text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">share_location</span>
+<span>نطاق الـ 10 كم وسرعة الاستجابة السريرية</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">استكشاف التغطية الجغرافية اللحظية</h2>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="w-3 h-3 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm text-on-surface">تغطية نشطة ومفعلة</span>
+<span class="w-3 h-3 rounded-full bg-outline-variant ms-space-sm"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">مرحلة التفعيل والتوسع</span>
+</div>
+</div>
+<!-- Active Governorates Interactive Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg pb-space-xl">
+<!-- Cairo Metro Card -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface">القاهرة الكبرى</span>
+<span class="bg-tertiary/10 text-tertiary font-label-sm text-label-sm px-space-sm py-space-xs rounded-full">تغطية فائقة 24/7</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">المعادي، التجمع، مدينة نصر، مصر الجديدة، الزمالك، الشروق.</p>
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">الممارسون المتاحون الآن:</span>
+<span class="font-bold text-primary">640 ممارس</span>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">متوسط سرعة الوصول:</span>
+<span class="font-bold text-tertiary">14 - 20 دقيقة</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-md border-t border-surface-container flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">نطاق الاستجابة: 10 كم</span>
+<button class="text-primary hover:text-primary-container font-label-sm text-label-sm flex items-center gap-space-xs" onclick="quickSelectArea('cairo')" type="button">
+<span>عرض مناطق الحي</span>
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+</button>
+</div>
+</div>
+<!-- Giza Governorate Card -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface">محافظة الجيزة</span>
+<span class="bg-tertiary/10 text-tertiary font-label-sm text-label-sm px-space-sm py-space-xs rounded-full">تغطية نشطة</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">الدقي، المهندسين، 6 أكتوبر، الشيخ زايد، فيصل والهرم.</p>
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">الممارسون المتاحون الآن:</span>
+<span class="font-bold text-primary">480 ممارس</span>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">متوسط سرعة الوصول:</span>
+<span class="font-bold text-tertiary">18 - 25 دقيقة</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-md border-t border-surface-container flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">نطاق الاستجابة: 10 كم</span>
+<button class="text-primary hover:text-primary-container font-label-sm text-label-sm flex items-center gap-space-xs" onclick="quickSelectArea('giza')" type="button">
+<span>عرض مناطق الحي</span>
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+</button>
+</div>
+</div>
+<!-- Alexandria Card -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface">محافظة الإسكندرية</span>
+<span class="bg-tertiary/10 text-tertiary font-label-sm text-label-sm px-space-sm py-space-xs rounded-full">تغطية نشطة</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">سموحة، سيدي جابر، لوران، ميامي، محرم بك، العجمي.</p>
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">الممارسون المتاحون الآن:</span>
+<span class="font-bold text-primary">360 ممارس</span>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">متوسط سرعة الوصول:</span>
+<span class="font-bold text-tertiary">20 - 28 دقيقة</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-md border-t border-surface-container flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">نطاق الاستجابة: 10 كم</span>
+<button class="text-primary hover:text-primary-container font-label-sm text-label-sm flex items-center gap-space-xs" onclick="quickSelectArea('alex')" type="button">
+<span>عرض مناطق الحي</span>
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Live Dispatch Map Display with Interactive Overlay -->
+<div class="relative w-full rounded-2xl overflow-hidden shadow-md">
+<div class="w-full h-96 bg-cover bg-center" data-location="Cairo, Egypt" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-B2_LbQAeMvcIQeJYIulScGOlWboU0pjtSDBBys73aW_SPWRBwZ9EbBaECn9G2J0ERnuMknM_EHKcr-Yg53PpkyIVfe3wUdLOHPifJssQ_vvu3UXAkdG-WoM32F0pOQbpcCs91_-ThgIklISJmWXa8y3wLAn4RTabOJEu5V58Pr0V48Lv5Kc77UgKg1L6gZ4I9G_44rvkkYDnpNebgbAAWjwXyg7FFcOeA6atOQ-l1LjogH9ruHFg')"></div>
+<div class="absolute top-4 right-4 bg-surface-container-lowest/95 backdrop-blur-md p-space-md rounded-xl shadow-md max-w-sm">
+<div class="flex items-center gap-space-xs text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">radar</span>
+<span>رادار النطاق الفوري (10 كم)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface mt-space-xs">
+            يتم توجيه أقرب ممرض أو أخصائي رعاية معتمد جغرافياً لتفادي الاختناقات المرورية وسرعة إنقاذ الحالات الحرجة.
+          </p>
+</div>
+<!-- Expansion Request Action Strip (Decree #230) -->
+<div class="absolute bottom-4 inset-x-4 bg-surface-container-lowest/95 backdrop-blur-md p-space-md rounded-xl shadow-md flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[20px]">add_location_alt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">هل تقع في محافظة أخرى غير مدرجة بالقائمة؟</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">سجل طلب منطقتك لنمنحها أولوية في خطة التوسع القادمة (القرار #230).</span>
+</div>
+</div>
+<button class="whitespace-nowrap px-space-md py-space-xs bg-secondary text-on-secondary rounded-lg font-label-md text-label-md hover:bg-on-secondary-container transition-colors" onclick="openInterestModal()" type="button">
+            سجل اهتمام منطقتك الآن
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Clinical Pillars & Legal Governance Section -->
+<section class="w-full py-space-xl bg-surface">
+<div class="max-w-7xl mx-auto px-margin-lg">
+<div class="text-center max-w-2xl mx-auto pb-space-xl">
+<span class="text-primary font-label-sm text-label-sm">حوكمة طبية صارمة ومطابقة تشريعية</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">أمان المريض والأسرة خط أحمر لا يقبل المساومة</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-sm">
+          تخضع كل زيارة رعاية منزلية لسلسلة محكمة من الضوابط الرقمية والجنائية والطبية طبقاً لأحدث التشريعات المصرية.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Pillar 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">gavel</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">قانون المسؤولية الطبية رقم 13 لسنة 2025</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              تأمين شامل ضد الأخطاء المهنية لجميع الممارسين. لا يتعامل مع المنظومة أي كادر إلا بعد التحقق الجنائي وإثبات القيد الفعال في نقابة أطباء وتمريض مصر وسجل مزاولة المهنة.
+            </p>
+</div>
+<div class="pt-space-xs flex items-center gap-space-xs text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>فحص دوري لشهادات الصلاحية</span>
+</div>
+</div>
+<!-- Pillar 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[28px]">fingerprint</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">التحقق المزدوج من الحضور (القرار #170 و#171)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              مسح رمز استجابة سريعة (Dynamic OTP &amp; QR) عند باب منزل المريض. لا يبدأ عداد الزيارة ولا تصرف مستحقات الممارس إلا بعد تأكيد المريض لهوية الكادر عبر الكود المباشر.
+            </p>
+</div>
+<div class="pt-space-xs flex items-center gap-space-xs text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>حماية كاملة من انتحال الصفة</span>
+</div>
+</div>
+<!-- Pillar 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[28px]">biotech</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">بروتوكول النفايات الحادة (Sharps Protocol)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              يلتزم كل ممارس بحمل حاوية عزل النفايات البيولوجية المعتمدة والتخلص الآمن من السرنجات والكانولات، مع حظر التخلص منها في صناديق القمامة المنزلية التزاماً بقانون البيئة.
+            </p>
+</div>
+<div class="pt-space-xs flex items-center gap-space-xs text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>حاويات صفراء معقمة ضد الثقب</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Area Interest Modal (Decree #230) -->
+<div class="hidden fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm flex items-center justify-center p-space-md" id="interest-modal">
+<div class="bg-surface-container-lowest max-w-lg w-full p-space-lg rounded-2xl shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b border-surface-container pb-space-sm">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined text-[24px]">location_on</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">طلب تفعيل التغطية الجغرافية</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-on-surface" onclick="closeInterestModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        أدخل بيانات منطقتك ومحافظتك ليتم إدراجها ضمن النطاقات ذات الأولوية وإشعارك فور تدشين الطاقم التمريضي المتنقل بها.
+      </p>
+<form class="flex flex-col gap-space-md" onsubmit="event.preventDefault(); submitInterestForm();">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">اسم المحافظة</label>
+<input class="h-11 px-space-md bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="مثال: المنصورة، طنطا، أسيوط، الإسماعيلية..." required="" type="text"/>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">الحي أو القرية أو المدينة</label>
+<input class="h-11 px-space-md bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="مثال: حي الجامعة، وسط البلد، مركز..." required="" type="text"/>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">رقم الهاتف لتلقي الإشعار (SMS)</label>
+<input class="h-11 px-space-md bg-surface-container-low rounded-lg font-body-md text-body-md text-on-surface text-right focus:outline-none focus:ring-2 focus:ring-primary/20" dir="ltr" placeholder="+20 1x xxxx xxxx" required="" type="tel"/>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-space-xs bg-surface-container text-on-surface-variant rounded-lg font-label-md text-label-md" onclick="closeInterestModal()" type="button">إلغاء</button>
+<button class="px-space-md py-space-xs bg-primary text-on-primary rounded-lg font-label-md text-label-md" type="submit">تأكيد التسجيل</button>
+</div>
+</form>
+<div class="hidden p-space-sm bg-tertiary/10 text-tertiary rounded-lg font-body-sm text-body-sm text-center" id="interest-success">
+        تم قيد طلب منطقتك بنجاح! سنوافيك برسالة فور اعتماد الفريق الطبي بالمنطقة.
+      </div>
+</div>
+</div>
+<script>
+    function updateDistrictOptions() {
+      const gov = document.getElementById('gov-select').value;
+      const districtSelect = document.getElementById('district-select');
+      districtSelect.innerHTML = '';
+
+      let options = [];
+      if (gov === 'cairo') {
+        options = [
+          { val: 'maadi', text: 'المعادي ودجلة' },
+          { val: 'tagamoa', text: 'القاهرة الجديدة والتجمع الخامس' },
+          { val: 'nasrcity', text: 'مدينة نصر ومصر الجديدة' },
+          { val: 'shorouk', text: 'الشروق ومدينتي' }
+        ];
+      } else if (gov === 'giza') {
+        options = [
+          { val: 'dokki', text: 'الدقي والمهندسين' },
+          { val: 'october', text: 'مدينة 6 أكتوبر والشيخ زايد' },
+          { val: 'haram', text: 'فيصل والهرم' }
+        ];
+      } else if (gov === 'alex') {
+        options = [
+          { val: 'smouha', text: 'سموحة وسيدي جابر' },
+          { val: 'miami', text: 'ميامي ولوران' },
+          { val: 'agami', text: 'العجمي والساحل' }
+        ];
+      }
+
+      options.forEach(opt => {
+        const el = document.createElement('option');
+        el.value = opt.val;
+        el.textContent = opt.text;
+        districtSelect.appendChild(el);
+      });
+    }
+
+    function handleExploreSearch() {
+      const alertBox = document.getElementById('search-alert');
+      const alertText = document.getElementById('search-alert-text');
+      const district = document.getElementById('district-select').selectedOptions[0]?.text || 'المنطقة المحددة';
+      
+      alertText.textContent = `التغطية مفعلة ومكتملة في (${district}): يتواجد 12 ممارساً وممرضاً معتمداً جاهزين للانطلاق فوراً.`;
+      alertBox.classList.remove('hidden');
+    }
+
+    function quickSelectArea(gov) {
+      document.getElementById('gov-select').value = gov;
+      updateDistrictOptions();
+      window.scrollTo({ top: 380, behavior: 'smooth' });
+      handleExploreSearch();
+    }
+
+    function calculateLiveEstimate() {
+      const selectedRadio = document.querySelector('input[name="calc-proc"]:checked');
+      const procBase = parseFloat(selectedRadio.value);
+      const procName = selectedRadio.getAttribute('data-label');
+      const duration = parseInt(document.getElementById('duration-range').value, 10);
+      const isNight = document.getElementById('night-shift-check').checked;
+
+      // Updating duration label
+      document.getElementById('duration-display').textContent = duration === 30 ? '30 دقيقة (الحد الأدنى للزيارة)' : `${duration} دقيقة`;
+
+      // Rates
+      const visitBase = 70.0; // Cairo Standard dispatch base
+      const extraMins = Math.max(0, duration - 30);
+      const extraCost = extraMins * 2.50; // 2.5 EGP per minute
+
+      let subtotal = procBase + visitBase + extraCost;
+      let nightSurcharge = 0;
+
+      if (isNight) {
+        nightSurcharge = subtotal * 0.25;
+        document.getElementById('inv-night-row').classList.remove('hidden');
+        document.getElementById('inv-night-cost').textContent = `${nightSurcharge.toFixed(2)} ج.م`;
+      } else {
+        document.getElementById('inv-night-row').classList.add('hidden');
+      }
+
+      const grandTotal = Math.round(subtotal + nightSurcharge);
+
+      // Update Breakdown
+      document.getElementById('inv-proc-name').textContent = procName;
+      document.getElementById('inv-proc-cost').textContent = `${procBase.toFixed(2)} ج.م`;
+      document.getElementById('inv-extra-mins-label').textContent = `الوقت الإضافي (${extraMins} دقيقة)`;
+      document.getElementById('inv-extra-mins-cost').textContent = `${extraCost.toFixed(2)} ج.م`;
+      document.getElementById('total-amount-display').textContent = grandTotal;
+
+      // Update Tafqeet text
+      document.getElementById('tafqeet-display').textContent = getArabicTafqeet(grandTotal);
+    }
+
+    function getArabicTafqeet(number) {
+      if (number <= 250) return 'فقط مائتان وخمسون جنيهاً مصرياً لا غير.';
+      if (number <= 350) return 'فقط ثلاثمائة وخمسون جنيهاً مصرياً لا غير.';
+      if (number <= 450) return 'فقط أربعمائة وخمسون جنيهاً مصرياً لا غير.';
+      if (number <= 550) return 'فقط خمسمائة وخمسون جنيهاً مصرياً لا غير.';
+      if (number <= 700) return 'فقط سبعمائة جنيه مصري لا غير.';
+      if (number <= 900) return 'فقط تسعمائة جنيه مصري لا غير.';
+      return `فقط ${number} جنيهاً مصرياً لا غير.`;
+    }
+
+    function openInterestModal() {
+      document.getElementById('interest-modal').classList.remove('hidden');
+    }
+
+    function closeInterestModal() {
+      document.getElementById('interest-modal').classList.add('hidden');
+      document.getElementById('interest-success').classList.add('hidden');
+    }
+
+    function submitInterestForm() {
+      document.getElementById('interest-success').classList.remove('hidden');
+      setTimeout(() => {
+        closeInterestModal();
+      }, 2500);
+    }
+
+    // Initialize initial calculations
+    document.addEventListener('DOMContentLoaded', () => {
+      calculateLiveEstimate();
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_-1px_6px_rgba(0,0,0,0.02)] mt-space-xl"><div class="max-w-7xl mx-auto px-margin-lg py-space-xl flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant font-body-sm text-body-sm"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-tertiary text-[20px]">verified_user</span><span>معتمد من وزارة الصحة ونقابة أطباء مصر © 2025 هوم كير مصر</span></div><div class="flex items-center gap-space-lg"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="syndicate-verification" href="#">اللوائح والشهادات</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="emergency-dispatch-info" href="#">الدعم والإسعاف السريع</a></div></div></footer></body></html>

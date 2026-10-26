@@ -55,6 +55,7 @@ Route::prefix('v1')->group(function () {
         Route::get('professionals/offers', [OfferController::class, 'index']);
 
         // Booking and dispatch
+        Route::post('bookings/eligibility', [BookingController::class, 'eligibility']);
         Route::post('bookings', [BookingController::class, 'store']);
         Route::get('bookings/{booking}', [BookingController::class, 'show']);
         Route::post('bookings/{booking}/search', [BookingController::class, 'search']);

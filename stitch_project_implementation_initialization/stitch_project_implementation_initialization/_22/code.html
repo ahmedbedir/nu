@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"inverse-primary":"#a3c9ff","primary":"#004f8d","on-surface-variant":"#414751","surface-container-high":"#e5e9ec","outline":"#717782","on-tertiary-container":"#7efbc5","secondary":"#47607d","surface":"#f6fafd","on-background":"#171c1f","surface-bright":"#f6fafd","on-primary":"#ffffff","surface-dim":"#d6dbdd","on-tertiary-fixed":"#002114","background":"#f6fafd","secondary-container":"#c2dcfe","secondary-fixed":"#d1e4ff","on-primary-container":"#d5e4ff","primary-fixed":"#d3e4ff","on-secondary-fixed":"#001d35","on-secondary-container":"#48617e","inverse-surface":"#2c3134","surface-variant":"#dfe3e6","surface-container-lowest":"#ffffff","on-tertiary-fixed-variant":"#005138","primary-fixed-dim":"#a3c9ff","primary-container":"#1267b2","on-secondary":"#ffffff","tertiary":"#00593e","inverse-on-surface":"#edf1f4","tertiary-fixed-dim":"#5fdca9","outline-variant":"#c1c7d3","surface-tint":"#0060aa","on-tertiary":"#ffffff","error":"#ba1a1a","error-container":"#ffdad6","surface-container":"#eaeef1","surface-container-highest":"#dfe3e6","tertiary-container":"#007451","on-error-container":"#93000a","surface-container-low":"#f0f4f7","on-primary-fixed-variant":"#004882","secondary-fixed-dim":"#afc9ea","on-primary-fixed":"#001c38","tertiary-fixed":"#7df9c4","on-secondary-fixed-variant":"#2f4964","on-surface":"#171c1f","on-error":"#ffffff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter-md":"1.5rem","space-sm":"0.5rem","space-xl":"2rem","gutter":"1rem","margin":"1rem","gutter-lg":"2rem","space-md":"1rem","space-lg":"1.5rem","space-xs":"0.25rem","margin-lg":"2.5rem","margin-md":"1.5rem"},"fontFamily":{"headline-md-mobile":["IBM Plex Sans"],"label-lg":["IBM Plex Sans"],"headline-lg":["IBM Plex Sans"],"body-md":["IBM Plex Sans"],"body-sm":["IBM Plex Sans"],"headline-md":["IBM Plex Sans"],"headline-lg-mobile":["IBM Plex Sans"],"headline-sm":["IBM Plex Sans"],"label-sm":["IBM Plex Sans"],"display-hero-mobile":["IBM Plex Sans"],"body-lg":["IBM Plex Sans"],"display-hero":["IBM Plex Sans"],"label-md":["IBM Plex Sans"]},"fontSize":{"headline-md-mobile":["1.25rem",{"lineHeight":"1.875rem","fontWeight":"600"}],"label-lg":["1rem",{"lineHeight":"1.5rem","fontWeight":"600"}],"headline-lg":["2rem",{"lineHeight":"2.75rem","fontWeight":"700"}],"body-md":["1rem",{"lineHeight":"1.625rem","fontWeight":"400"}],"body-sm":["0.875rem",{"lineHeight":"1.375rem","fontWeight":"400"}],"headline-md":["1.5rem",{"lineHeight":"2.25rem","fontWeight":"600"}],"headline-lg-mobile":["1.5rem",{"lineHeight":"2.25rem","fontWeight":"600"}],"headline-sm":["1.25rem",{"lineHeight":"1.875rem","fontWeight":"600"}],"label-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"600"}],"display-hero-mobile":["2rem",{"lineHeight":"2.75rem","fontWeight":"700"}],"body-lg":["1.125rem",{"lineHeight":"1.75rem","fontWeight":"400"}],"display-hero":["2.75rem",{"lineHeight":"3.5rem","fontWeight":"700"}],"label-md":["0.875rem",{"lineHeight":"1.25rem","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed right-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between py-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col gap-space-lg"><div class="px-space-lg flex items-center gap-space-sm"><div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[24px]">local_hospital</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">هوم كير مصر</span><span class="font-label-sm text-label-sm text-on-surface-variant">لوحة الرقابة والمراجعة</span></div></div><div class="px-space-md"><div class="bg-surface-container-high rounded-lg p-space-sm flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="font-label-sm text-label-sm text-tertiary font-bold">نظام الاعتماد الإكلينيكي نشط</span></div></div><nav class="flex flex-col gap-space-xs px-space-md" data-active-classes="bg-primary-container text-on-primary font-bold shadow-sm"><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-all bg-primary-container text-on-primary font-bold shadow-sm" data-path="clinical-catalog-management" href="#"><span class="material-symbols-outlined text-[20px]">clinical_notes</span><span>إدارة الدليل الإكلينيكي</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all font-label-md text-label-md" data-path="practitioner-verification" href="#"><span class="material-symbols-outlined text-[20px]">verified</span><span>مراجعة تراخيص الكوادر</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all font-label-md text-label-md" data-path="dispatch-monitoring" href="#"><span class="material-symbols-outlined text-[20px]">ambulance</span><span>غرفة تتبع الزيارات الميدانية</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all font-label-md text-label-md" data-path="service-pricing-audit" href="#"><span class="material-symbols-outlined text-[20px]">payments</span><span>تسعير الخدمات والمحافظات</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all font-label-md text-label-md" data-path="quality-assurance" href="#"><span class="material-symbols-outlined text-[20px]">fact_check</span><span>تقارير الجودة والسلامة</span></a></nav></div><div class="px-space-md"><div class="bg-surface-container-lowest p-space-md rounded-xl flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface">د. أحمد الشناوي</span><span class="font-label-sm text-label-sm text-on-surface-variant">مراجع إكلينيكي معتمد</span></div></div><span class="material-symbols-outlined text-on-surface-variant text-[20px]">lock_open</span></div></div></aside><div class="pr-72"><header class="fixed top-0 right-72 left-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-margin-lg"><div class="flex items-center gap-space-sm text-on-surface-variant font-label-md text-label-md"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="clinical-catalog-management" href="#">الرئيسية</a><span class="material-symbols-outlined text-[16px]">chevron_left</span><span class="text-primary font-bold">إدارة الدليل والخدمات الإكلينيكية</span></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs text-secondary font-label-sm text-label-sm bg-surface-container px-space-sm py-space-xs rounded"><span class="material-symbols-outlined text-[16px]">location_city</span><span>نطاق القاهرة والجيزة</span></div><div class="flex items-center gap-space-md"><button class="text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span></button><button class="text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">help_outline</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 bg-surface w-full min-h-screen px-margin-lg py-space-lg"><div class="flex flex-col w-full gap-space-lg">
+<!-- Header Section with Medical Protocol Status & Actions -->
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">policy</span>
+<span>بروتوكولات القرار الإكلينيكي #63-#85</span>
+</span>
+<span class="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded bg-tertiary/10 text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+<span>إصدار المعايير الطبية المعتمدة v2.4</span>
+</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">| نقابة أطباء مصر • هيئة الدواء</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">إدارة واعتماد الكتالوج السريري والأوامر الطبية</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-3xl">
+        بوابة التدقيق الطبي المباشر للمراجعة السريرية، تصنيف كفاءة الكوادر الصحية، ضبط قيود الروشتات، وضوابط السلامة القصوى وعلامات الخطر لنطاق جمهورية مصر العربية.
+      </p>
+</div>
+<!-- Quick Tool Actions -->
+<div class="flex items-center gap-space-sm self-stretch lg:self-auto">
+<button class="flex-1 lg:flex-none flex items-center justify-center gap-space-xs px-space-md py-space-sm bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md rounded-lg transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>تصدير دليل الإجراءات</span>
+</button>
+<button class="flex-1 lg:flex-none flex items-center justify-center gap-space-xs px-space-md py-space-sm bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md rounded-lg shadow-sm transition-all" onclick="openApprovalModal('SRV-204')" type="button">
+<span class="material-symbols-outlined text-[18px]">add_task</span>
+<span>اعتماد إجراء جديد</span>
+</button>
+</div>
+</div>
+<!-- KPI Statistical Ribbon -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Total Clinical Services Approved -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-all">
+<div class="absolute -left-6 -top-6 w-24 h-24 bg-primary/5 rounded-full blur-xl group-hover:bg-primary/10 transition-colors"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">الخدمات السريرية المعتمدة</span>
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">medical_services</span>
+</div>
+</div>
+<div class="mt-space-md flex items-baseline justify-between">
+<span class="font-display-hero text-display-hero text-primary font-bold">48</span>
+<span class="inline-flex items-center text-tertiary font-label-sm text-label-sm gap-0.5">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+<span>+3 هذا الشهر</span>
+</span>
+</div>
+<div class="mt-space-sm pt-space-xs border-t-0 flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>تغطي 6 محافظات نشطة</span>
+<span class="text-primary font-label-sm text-label-sm">القرار #63</span>
+</div>
+</div>
+<!-- Drafts / Pending Clinical Review -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-all">
+<div class="absolute -left-6 -top-6 w-24 h-24 bg-secondary-container/40 rounded-full blur-xl group-hover:bg-secondary-container/60 transition-colors"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">مسودات تنتظر التدقيق الطبي</span>
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">rate_review</span>
+</div>
+</div>
+<div class="mt-space-md flex items-baseline justify-between">
+<span class="font-display-hero text-display-hero text-on-surface font-bold">06</span>
+<span class="inline-flex items-center text-error font-label-sm text-label-sm gap-0.5">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>2 عاجل (SLA)</span>
+</span>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>مراجعة استشاري الطوارئ</span>
+<span class="text-secondary font-label-sm text-label-sm">القرار #65</span>
+</div>
+</div>
+<!-- Medical Orders Requiring Clinical Audit -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-all">
+<div class="absolute -left-6 -top-6 w-24 h-24 bg-error-container/30 rounded-full blur-xl group-hover:bg-error-container/50 transition-colors"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">روشتات تتطلب فحصاً سريرياً</span>
+<div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[22px]">prescriptions</span>
+</div>
+</div>
+<div class="mt-space-md flex items-baseline justify-between">
+<span class="font-display-hero text-display-hero text-error font-bold">12</span>
+<span class="inline-flex items-center text-on-error-container bg-error-container/60 px-space-xs py-0.5 rounded font-label-sm text-label-sm">
+<span>صلاحية أقل من 7 أيام</span>
+</span>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>تحقق تعارض الجرعات</span>
+<span class="text-error font-label-sm text-label-sm">القرار #70 • #71</span>
+</div>
+</div>
+<!-- Infection Control & Sharps Disposal Compliance -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-all">
+<div class="absolute -left-6 -top-6 w-24 h-24 bg-tertiary/10 rounded-full blur-xl group-hover:bg-tertiary/20 transition-colors"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">امتثال مكافحة العدوى ونفايات Sharps</span>
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[22px]">health_and_safety</span>
+</div>
+</div>
+<div class="mt-space-md flex items-baseline justify-between">
+<span class="font-display-hero text-display-hero text-tertiary font-bold">100%</span>
+<span class="inline-flex items-center text-tertiary font-label-sm text-label-sm gap-0.5">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+<span>صارم ومطبق</span>
+</span>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>صناديق أمان وحقائب بيولوجية</span>
+<span class="text-tertiary font-label-sm text-label-sm">القرار #84 • #85</span>
+</div>
+</div>
+</div>
+<!-- Medical Policy Banner: Regulatory Highlights -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">gavel</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">سجل القرارات الميدانية الملزمة (المجموعة 04 - الخدمات التمريضية والطبية)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+          يُحظر منعاً باتاً مباشرة أي إجراء علاجي وريدي للأطفال أقل من 12 سنة بدون تمريض عناية أطفال معتمد (قرار #46). الروشتة إجبارية لأي علاج دوائي منزلي ولا يُعتد بوصفات تخطت 7 أيام (قرار #70).
+        </span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs flex-shrink-0">
+<span class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container-highest text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">security</span>
+<span>بروتوكول السلامة 123 نشط</span>
+</span>
+</div>
+</div>
+<!-- Main Workstation: Filters & Catalog Management Grid -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Filter Bar -->
+<div class="p-space-lg bg-surface-container-low/50 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute right-space-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full h-11 pr-10 pl-space-md bg-surface-container-lowest rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all shadow-sm" placeholder="بحث بالاسم السريري، الكود، الفئة أو متطلب الروشتة..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<!-- Professional Role Filter -->
+<select class="h-11 px-space-md bg-surface-container-lowest rounded-lg font-label-sm text-label-sm text-on-surface-variant focus:outline-none shadow-sm cursor-pointer">
+<option value="all">كافة الكوادر المنفذة (القرار #63)</option>
+<option value="icu">تمريض رعاية مركزة (ICU Nurse)</option>
+<option value="general">تمريض عام مرخص</option>
+<option value="phlebo">فني سحب عينات معملية</option>
+<option value="physio">أخصائي علاج طبيعي</option>
+</select>
+<!-- Prescription Requirement Filter -->
+<select class="h-11 px-space-md bg-surface-container-lowest rounded-lg font-label-sm text-label-sm text-on-surface-variant focus:outline-none shadow-sm cursor-pointer">
+<option value="all">حالة متطلب الأمر الطبي (القرار #70)</option>
+<option value="mandatory">إلزامي حديث (خلال 7 أيام)</option>
+<option value="optional">استفسار تحضيري فقط</option>
+<option value="none">بدون وصفة دوائية</option>
+</select>
+<!-- Approval Status Filter -->
+<select class="h-11 px-space-md bg-surface-container-lowest rounded-lg font-label-sm text-label-sm text-on-surface-variant focus:outline-none shadow-sm cursor-pointer">
+<option value="all">جميع حالات الاعتماد</option>
+<option value="approved">معتمد إكلينيكياً (v2.4)</option>
+<option value="pending">قيد مراجعة د. مهران</option>
+<option value="flagged">موقوف مؤقتاً لمراجعة الأمان</option>
+</select>
+</div>
+</div>
+<!-- Desktop Clinical Catalog Table -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-right border-collapse">
+<thead>
+<tr class="bg-surface-container-high/60 text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-space-md px-space-lg">الإجراء السريري والكود</th>
+<th class="py-space-md px-space-md">الكادر المنفذ (القرار #63)</th>
+<th class="py-space-md px-space-md">متطلب الروشتة (القرار #70)</th>
+<th class="py-space-md px-space-md">محددات السن والمخاطر</th>
+<th class="py-space-md px-space-md">تجهيزات مكافحة العدوى والـ Sharps</th>
+<th class="py-space-md px-space-md">حالة الاعتماد السريري</th>
+<th class="py-space-md px-space-lg text-center">القرار الطبي</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high/30 font-body-sm text-body-sm">
+<!-- Row 1: IV Hydration & Cannulation -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-fixed flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">vaccines</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">تركيب كانيولا ومحاليل وريدية جفافية</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">SRV-IV-102 • مدة الإجراء: 45 دقيقة</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-md bg-secondary-container/60 text-on-secondary-container font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">badge</span>
+<span>تمريض عام مرخص + نقابة</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-space-xs text-error font-label-sm text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span>إلزامي حديث (أقل من 7 أيام)</span>
+</span>
+<span class="text-[11px] text-on-surface-variant">القرار #70: حظر الصرف بدون ختم</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="text-on-surface font-label-sm text-label-sm">البالغين وكبار السن (16+ سنة)</span>
+<span class="text-error font-label-sm text-label-sm">حظر الأطفال دون إشراف رعاية (#46)</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">صندوق Sharps Box أصفر</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">كيس أحمر بيولوجي</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">تورنيكيه معقم فردي</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 text-tertiary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>معتمد v2.4</span>
+</span>
+<span class="text-[11px] text-on-surface-variant">د. أحمد مهران (طوارئ)</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-center">
+<button class="px-space-sm py-1.5 bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary rounded-md font-label-sm text-label-sm transition-all shadow-sm" onclick="openApprovalModal('SRV-IV-102')" type="button">
+                مراجعة وتعديل
+              </button>
+</td>
+</tr>
+<!-- Row 2: Advanced Sterile Surgical Dressing -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">healing</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">غيار جراحي معقم متقدم (خياطة معقدة)</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">SRV-DRS-088 • مدة الإجراء: 60 دقيقة</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-md bg-primary-fixed/60 text-on-primary-fixed-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">emergency</span>
+<span>تمريض رعاية حرجة (ICU)</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-space-xs text-error font-label-sm text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span>تقرير جراحي حديث &lt; 5 أيام</span>
+</span>
+<span class="text-[11px] text-on-surface-variant">القرار #68: بروتوكول مكافحة التلوث</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="text-on-surface font-label-sm text-label-sm">جميع الأعمار (بشرط التقرير)</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">متابعة صديد أو التهاب خلوي</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">باكيت جراحي مونو</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">قفازات لاتكس معقمة</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">سلة مخاطر حيوية</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 text-tertiary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>معتمد v2.4</span>
+</span>
+<span class="text-[11px] text-on-surface-variant">د. أحمد مهران (طوارئ)</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-center">
+<button class="px-space-sm py-1.5 bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary rounded-md font-label-sm text-label-sm transition-all shadow-sm" onclick="openApprovalModal('SRV-DRS-088')" type="button">
+                مراجعة وتعديل
+              </button>
+</td>
+</tr>
+<!-- Row 3: Bedsores Care Stage II -->
+<tr class="hover:bg-surface-container-low/70 transition-colors bg-secondary-container/10">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-secondary-fixed flex items-center justify-center text-secondary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">airline_seat_flat</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">رعاية قرح الفراش المتقدمة (الدرجة الثانية والثالثة)</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">SRV-BED-204 • مدة الإجراء: 60 دقيقة</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-md bg-secondary-container/80 text-on-secondary-container font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span>تمريض رعاية مسنين / جروح</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-space-xs text-secondary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">help</span>
+<span>استفسار سريري + صور قبل الزيارة</span>
+</span>
+<span class="text-[11px] text-on-surface-variant">بروتوكول تصنيف نسيج النخر</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="text-on-surface font-label-sm text-label-sm">كبار السن وطريحي الفراش</span>
+<span class="text-error font-label-sm text-label-sm">استبعاد الغرغرينا الرطبة (طوارئ 123)</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">ضمادات هيدروكولويد</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">محلول ملحي دافئ</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">كيس نفايات طبي أصفر</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 text-secondary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px] animate-spin">sync</span>
+<span>قيد تدقيق الاستشاري</span>
+</span>
+<span class="text-[11px] text-on-surface-variant">مراجعة قيود النزيف</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-center">
+<button class="px-space-sm py-1.5 bg-primary text-on-primary rounded-md font-label-sm text-label-sm hover:bg-primary-container transition-all shadow-sm" onclick="openApprovalModal('SRV-BED-204')" type="button">
+                مراجعة قرار الاعتماد
+              </button>
+</td>
+</tr>
+<!-- Row 4: Home Phlebotomy & Blood Draws -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">bloodtype</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">سحب عينات دم وتحاليل منزلية شاملة</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">SRV-LAB-014 • مدة الإجراء: 25 دقيقة</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-md bg-surface-container-highest text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">biotech</span>
+<span>فني سحب عينات معملية معتمد</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span>طلب معملي أو روشتة استرشادية</span>
+</span>
+<span class="text-[11px] text-tertiary">متاح طلب باقات مسحية عامة</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="text-on-surface font-label-sm text-label-sm">كافة الفئات السنية</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">إبر أمان مخصصة لحديثي الولادة</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">Sharps Box محكم الصمامات</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">حاوية حفظ تبريد 4°C</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 text-tertiary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>معتمد v2.4</span>
+</span>
+<span class="text-[11px] text-on-surface-variant">معامل التحاليل المرجعية</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-center">
+<button class="px-space-sm py-1.5 bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary rounded-md font-label-sm text-label-sm transition-all shadow-sm" onclick="openApprovalModal('SRV-LAB-014')" type="button">
+                مراجعة وتعديل
+              </button>
+</td>
+</tr>
+<!-- Row 5: Nebulizer Session -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">air</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">جلسات استنشاق نيبولايزر وموسعات شعب</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">SRV-RES-031 • مدة الإجراء: 30 دقيقة</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-md bg-secondary-container/60 text-on-secondary-container font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">badge</span>
+<span>تمريض عام أو رعاية تنفسية</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-space-xs text-error font-label-sm text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span>روشتة جرعات محددة (فاركولين/بلميكورت)</span>
+</span>
+<span class="text-[11px] text-on-surface-variant">القرار #71: حظر زيادة الجرعة يدوياً</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="text-on-surface font-label-sm text-label-sm">الأطفال (فوق عامين) والبالغين</span>
+<span class="text-error font-label-sm text-label-sm">تحويل لـ 123 عند انخفاض O2 &lt; 88%</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">ماسك معقم أحادي الاستخدام</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[11px]">مقياس نبض وأكسجين Pulse-Oximeter</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col gap-0.5">
+<span class="inline-flex items-center gap-1 text-tertiary font-label-sm text-label-sm font-bold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>معتمد v2.4</span>
+</span>
+<span class="text-[11px] text-on-surface-variant">د. أحمد مهران (طوارئ)</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-center">
+<button class="px-space-sm py-1.5 bg-surface-container-high hover:bg-primary hover:text-on-primary text-primary rounded-md font-label-sm text-label-sm transition-all shadow-sm" onclick="openApprovalModal('SRV-RES-031')" type="button">
+                مراجعة وتعديل
+              </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-space-sm">
+<span>عرض 5 من إجمالي 54 إجراء سريري مسجل</span>
+<span class="text-outline">•</span>
+<span class="text-tertiary font-bold">الكتالوج متوافق بنسبة 100% مع بروتوكولات الأمان المصرية</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="w-8 h-8 rounded flex items-center justify-center bg-surface-container-lowest text-on-surface disabled:opacity-40" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+<span class="px-space-sm py-1 rounded bg-primary text-on-primary font-bold">1</span>
+<button class="w-8 h-8 rounded flex items-center justify-center bg-surface-container-lowest text-on-surface hover:bg-surface-container-high" type="button">2</button>
+<button class="w-8 h-8 rounded flex items-center justify-center bg-surface-container-lowest text-on-surface hover:bg-surface-container-high" type="button">3</button>
+<button class="w-8 h-8 rounded flex items-center justify-center bg-surface-container-lowest text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Medical Safety & Sharps Audit Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md">
+<!-- Red Flags Automated Protocol (Decision #79) -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-error">
+<span class="material-symbols-outlined text-[24px]">crisis_alert</span>
+<span class="font-label-lg text-label-lg font-bold">علامات الخطر القصوى (Red Flags)</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm">القرار #79</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          نظام حظر الحجز الفوري وتحويل المريض تلقائياً لرقم طوارئ الإسعاف المصري (123) عند رصد أي من المؤشرات التالية بالاستبيان:
+        </p>
+<ul class="flex flex-col gap-space-xs mt-space-xs">
+<li class="flex items-center gap-space-xs text-on-surface font-body-sm text-body-sm bg-surface-container-low p-space-xs rounded">
+<span class="material-symbols-outlined text-error text-[18px]">cancel</span>
+<span>نزيف شرياني أو جراحي نشط غير مسيطر عليه</span>
+</li>
+<li class="flex items-center gap-space-xs text-on-surface font-body-sm text-body-sm bg-surface-container-low p-space-xs rounded">
+<span class="material-symbols-outlined text-error text-[18px]">cancel</span>
+<span>هبوط حاد بالضغط (أقل من 80/50 mmHg) أو غيبوبة</span>
+</li>
+<li class="flex items-center gap-space-xs text-on-surface font-body-sm text-body-sm bg-surface-container-low p-space-xs rounded">
+<span class="material-symbols-outlined text-error text-[18px]">cancel</span>
+<span>صعوبة تنفس حادة أو ألم صدري انضغاطي ممتد</span>
+</li>
+</ul>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>تحويل تلقائي للاتصال الإسعافي 123</span>
+<span class="text-tertiary font-bold">تفعيل صارم 24/7</span>
+</div>
+</div>
+<!-- Sharps & Biohazard Bag Protocol (Decisions #84, #85) -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-tertiary">
+<span class="material-symbols-outlined text-[24px]">delete_forever</span>
+<span class="font-label-lg text-label-lg font-bold">إدارة النفايات والـ Sharps</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm">القرار #84 • #85</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          البروتوكول الإلزامي لحقيبة الكادر التمريضي أثناء الزيارات المنزلية، مع التخلص الآمن طبقاً لمواصفات وزارة البيئة والصحة:
+        </p>
+<div class="grid grid-cols-2 gap-space-xs mt-space-xs">
+<div class="bg-surface-container-low p-space-sm rounded flex flex-col items-center text-center gap-1">
+<span class="material-symbols-outlined text-primary text-[24px]">shield_with_house</span>
+<span class="font-label-sm text-label-sm text-on-surface">صندوق Sharps Box</span>
+<span class="text-[11px] text-on-surface-variant">سعة 1.5 لتر مضاد للثقب للإبر والمشارط</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded flex flex-col items-center text-center gap-1">
+<span class="material-symbols-outlined text-error text-[24px]">shopping_bag</span>
+<span class="font-label-sm text-label-sm text-on-surface">كيس أحمر مرمز</span>
+<span class="text-[11px] text-on-surface-variant">للشاش الملوث والقفازات الحيوية</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>تسليم النفايات لنقاط تجميع معتمدة</span>
+<span class="text-tertiary font-bold">100% نسبة التوثيق الرقمي</span>
+</div>
+</div>
+<!-- Prescription Rule Engine (Decision #70 & #71) -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined text-[24px]">clinical_notes</span>
+<span class="font-label-lg text-label-lg font-bold">محرك تدقيق الأوامر الطبية</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm">القرار #70 • #71</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          قواعد الأتمتة السريرية للحد من الأخطاء الدوائية وتجاوز الجرعات:
+        </p>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-start gap-space-xs text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px] mt-0.5">check_circle</span>
+<span><strong>صلاحية الروشتة:</strong> تنتهي الصلاحية تلقائياً بعد 7 أيام من تاريخ التحرير.</span>
+</div>
+<div class="flex items-start gap-space-xs text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px] mt-0.5">check_circle</span>
+<span><strong>حظر التعديل اليدوي:</strong> منع المريض أو التمريض من كتابة أي جرعة تخالف الروشتة الممسوحة ضوئياً.</span>
+</div>
+<div class="flex items-start gap-space-xs text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px] mt-0.5">check_circle</span>
+<span><strong>التوقيع الإكلينيكي:</strong> مراجعة أختام الأطباء المرخصين بنقابة أطباء مصر.</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>محرك المراجعة الذكي v2.4</span>
+<span class="text-primary font-bold">نشط مع نظام الذكاء الطبي</span>
+</div>
+</div>
+</div>
+<!-- Interactive Modal / Drawer for Clinical Approval -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-space-md bg-inverse-surface/50 backdrop-blur-sm hidden" id="clinicalApprovalModal">
+<div class="bg-surface-container-lowest w-full max-w-4xl max-h-[90vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+<!-- Modal Header -->
+<div class="p-space-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">assignment_turned_in</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface">جلسة اعتماد الإجراء الطبي: رعاية قرح الفراش المتقدمة</span>
+<span class="px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">SRV-BED-204</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">بوابة المراجع السريري: د. أحمد مهران (استشاري طب الطوارئ والاعتماد)</span>
+</div>
+</div>
+<button class="w-9 h-9 rounded-lg hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant transition-colors" onclick="closeApprovalModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Modal Body (Scrollable Review Panes) -->
+<div class="p-space-lg overflow-y-auto flex flex-col gap-space-lg">
+<!-- Section 1: Pre-booking Safety Questionnaire Protocol -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-label-lg text-label-lg text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">checklist</span>
+<span>1. استبيان السلامة الإلزامي للعميل قبل حجز الزيارة</span>
+</h2>
+<span class="text-tertiary font-label-sm text-label-sm font-bold">مفعل كخطوة إجبارية بالهاتف المحمول</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm bg-surface-container-low p-space-md rounded-xl">
+<label class="flex items-start gap-space-sm p-space-sm rounded bg-surface-container-lowest cursor-pointer">
+<input checked="" class="mt-1 w-4 h-4 text-primary rounded" disabled="" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">سؤال: هل يعاني المريض من ارتفاع درجة الحرارة &gt; 38.5°C؟</span>
+<span class="text-[11px] text-on-surface-variant">يتطلب استبعاد التسمم الدموي المصاحب لقرح الفراش</span>
+</div>
+</label>
+<label class="flex items-start gap-space-sm p-space-sm rounded bg-surface-container-lowest cursor-pointer">
+<input checked="" class="mt-1 w-4 h-4 text-primary rounded" disabled="" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">سؤال: هل توجد رائحة كريهة نفاذة أو إفرازات سوداء؟</span>
+<span class="text-[11px] text-on-surface-variant">رصد الغرغرينا الرطبة وتحديد ضرورة التدخل الجراحي بالمستشفى</span>
+</div>
+</label>
+<label class="flex items-start gap-space-sm p-space-sm rounded bg-surface-container-lowest cursor-pointer">
+<input checked="" class="mt-1 w-4 h-4 text-primary rounded" disabled="" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">سؤال: هل يتناول المريض أدوية سيولة الدم (وارفارين/كلكسان)؟</span>
+<span class="text-[11px] text-on-surface-variant">القرار #71: حظر التنضير الحاد في المنازل مع السيولة العالية</span>
+</div>
+</label>
+<label class="flex items-start gap-space-sm p-space-sm rounded bg-surface-container-lowest cursor-pointer">
+<input checked="" class="mt-1 w-4 h-4 text-primary rounded" disabled="" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">سؤال: إرفاق صورة واضحة للقرحة عبر الكاميرا</span>
+<span class="text-[11px] text-on-surface-variant">تقييم مبدئي من استشاري الجراحة المتاح في الغرفة</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Section 2: Red Flags & 123 Automatic Override Configuration -->
+<div class="flex flex-col gap-space-sm bg-error-container/20 p-space-md rounded-xl">
+<div class="flex items-center justify-between">
+<h2 class="font-label-lg text-label-lg text-error flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+<span>2. بروتوكول تحويل الطوارئ (الإسعاف 123) - القرار #79</span>
+</h2>
+<span class="px-space-xs py-0.5 rounded bg-error text-on-error font-label-sm text-label-sm">قفل أمني تلقائي</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+            في حال الإجابة بـ "نعم" على أي من علامات الخطر الحرجة، يقوم النظام البرمجي بوقف عملية الحجز كلياً، ويظهر للمستخدم شاشة إنذار حمراء تنقله لطلب النجدة الطبية العاجلة (123) مع تنبيه غرفة العمليات المركزية.
+          </p>
+<div class="flex items-center gap-space-md text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span>تسجيل رقم الهاتف تلقائياً بالبلاغ الإسعافي</span>
+</span>
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span>إخطار مسؤول الطوارئ الميداني</span>
+</span>
+</div>
+</div>
+<!-- Section 3: Medication Dosage Cross-Matching Engine (Decision #71) -->
+<div class="flex flex-col gap-space-sm">
+<h2 class="font-label-lg text-label-lg text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">medication</span>
+<span>3. معايير تعارض الجرعات والروشتات (القرار #71)</span>
+</h2>
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col gap-space-xs font-body-sm text-body-sm">
+<div class="flex items-center justify-between">
+<span class="font-bold text-on-surface">حظر التعديل اليدوي للمستخدم:</span>
+<span class="text-tertiary font-label-sm text-label-sm">مفعل (Strict Lock)</span>
+</div>
+<p class="text-on-surface-variant text-[13px]">
+              النظام يقارن الجرعة المطلوبة بالروشتة الطبية المرفوعة بواسطة مسح الـ OCR السريري. إذا تطابقت الروشتة مع الحد الأقصى الآمن للدواء المعتمد بهيئة الدواء المصرية، يتم السماح للتمريض بالحقن أو التركيب، ودون ذلك يُرفض الإجراء فوراً.
+            </p>
+</div>
+</div>
+<!-- Clinical Reviewer Observations Textarea -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-md text-label-md text-on-surface">ملاحظات وقرار الاستشاري المراجع (Clinical Auditor Notes):</label>
+<textarea class="w-full p-space-md bg-surface-container-low rounded-xl font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none shadow-sm" placeholder="أدخل الملاحظات الإكلينيكية، اشتراطات إضافية للكادر، أو أسباب طلب الاستيفاء..." rows="3"></textarea>
+</div>
+</div>
+<!-- Modal Actions (Clinical Decision Buttons) -->
+<div class="p-space-lg bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<button class="w-full sm:w-auto px-space-md py-space-sm bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md rounded-lg transition-colors" onclick="closeApprovalModal()" type="button">
+          إلغاء والعودة
+        </button>
+<div class="flex items-center gap-space-sm w-full sm:w-auto">
+<!-- Reject / Safety Flag Action -->
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-space-xs px-space-md py-space-sm bg-error-container text-on-error-container hover:bg-error hover:text-on-error font-label-md text-label-md rounded-lg transition-all" onclick="executeDecision('reject')" type="button">
+<span class="material-symbols-outlined text-[18px]">gpp_bad</span>
+<span>رفض مع إشعار بالسلامة</span>
+</button>
+<!-- Request Completion -->
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-space-xs px-space-md py-space-sm bg-secondary-container text-on-secondary-container hover:bg-secondary hover:text-on-secondary font-label-md text-label-md rounded-lg transition-all" onclick="executeDecision('info')" type="button">
+<span class="material-symbols-outlined text-[18px]">contact_support</span>
+<span>طلب استيفاء طبي وإعادة فحص</span>
+</button>
+<!-- Official Approval Action -->
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-space-xs px-space-lg py-space-sm bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-bold rounded-lg shadow-sm transition-all" onclick="executeDecision('approve')" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>اعتماد ونشر للجمهور (v2.4)</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Inline Interactive Script for Modal Controls -->
+<script>
+  function openApprovalModal(serviceCode) {
+    const modal = document.getElementById('clinicalApprovalModal');
+    if (modal) {
+      modal.classList.remove('hidden');
+    }
+  }
+
+  function closeApprovalModal() {
+    const modal = document.getElementById('clinicalApprovalModal');
+    if (modal) {
+      modal.classList.add('hidden');
+    }
+  }
+
+  function executeDecision(type) {
+    if (type === 'approve') {
+      alert('تم اعتماد الإجراء السريري ونشره على منصة هوم كير مصر بنسخة البروتوكول v2.4 بنجاح.');
+    } else if (type === 'info') {
+      alert('تم إرسال طلب استيفاء طبي للجهة الطالبة مع قفل الخدمة لحين استلام التحديثات.');
+    } else if (type === 'reject') {
+      alert('تم رفض الإجراء وتسجيله في سجل المخاطر لعدم مطابقة اشتراطات السلامة والقرار #79.');
+    }
+    closeApprovalModal();
+  }
+
+  // Close modal when pressing Escape key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      closeApprovalModal();
+    }
+  });
+</script></main></div></body></html>

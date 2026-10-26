@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;font-family:'IBM Plex Sans',sans-serif;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-bright":"#f6fafd","on-background":"#171c1f","on-surface":"#171c1f","surface-container-highest":"#dfe3e6","tertiary-container":"#007451","inverse-surface":"#2c3134","secondary-container":"#c2dcfe","surface-tint":"#0060aa","error-container":"#ffdad6","tertiary-fixed":"#7df9c4","on-secondary":"#ffffff","background":"#f6fafd","surface-container-low":"#f0f4f7","on-tertiary-fixed-variant":"#005138","inverse-on-surface":"#edf1f4","on-error-container":"#93000a","on-secondary-fixed-variant":"#2f4964","primary-fixed":"#d3e4ff","inverse-primary":"#a3c9ff","on-secondary-fixed":"#001d35","surface-dim":"#d6dbdd","secondary-fixed":"#d1e4ff","on-tertiary-fixed":"#002114","on-primary-fixed":"#001c38","surface-container-lowest":"#ffffff","tertiary":"#00593e","surface-variant":"#dfe3e6","tertiary-fixed-dim":"#5fdca9","surface-container":"#eaeef1","on-primary-container":"#d5e4ff","primary":"#004f8d","secondary":"#47607d","surface-container-high":"#e5e9ec","outline-variant":"#c1c7d3","secondary-fixed-dim":"#afc9ea","on-tertiary-container":"#7efbc5","on-primary-fixed-variant":"#004882","outline":"#717782","error":"#ba1a1a","on-tertiary":"#ffffff","on-secondary-container":"#48617e","primary-container":"#1267b2","on-primary":"#ffffff","surface":"#f6fafd","on-error":"#ffffff","on-surface-variant":"#414751","primary-fixed-dim":"#a3c9ff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-lg":"1.5rem","space-xs":"0.25rem","margin":"1rem","space-xl":"2rem","margin-md":"1.5rem","gutter":"1rem","gutter-md":"1.5rem","space-md":"1rem","gutter-lg":"2rem","margin-lg":"2.5rem","space-sm":"0.5rem"},"fontFamily":{"headline-lg-mobile":["IBM Plex Sans"],"headline-md":["IBM Plex Sans"],"headline-md-mobile":["IBM Plex Sans"],"label-md":["IBM Plex Sans"],"headline-sm":["IBM Plex Sans"],"display-hero-mobile":["IBM Plex Sans"],"display-hero":["IBM Plex Sans"],"body-sm":["IBM Plex Sans"],"body-lg":["IBM Plex Sans"],"label-sm":["IBM Plex Sans"],"headline-lg":["IBM Plex Sans"],"label-lg":["IBM Plex Sans"],"body-md":["IBM Plex Sans"]},"fontSize":{"headline-lg-mobile":["1.5rem",{"lineHeight":"2.25rem","fontWeight":"600"}],"headline-md":["1.5rem",{"lineHeight":"2.25rem","fontWeight":"600"}],"headline-md-mobile":["1.25rem",{"lineHeight":"1.875rem","fontWeight":"600"}],"label-md":["0.875rem",{"lineHeight":"1.25rem","fontWeight":"600"}],"headline-sm":["1.25rem",{"lineHeight":"1.875rem","fontWeight":"600"}],"display-hero-mobile":["2rem",{"lineHeight":"2.75rem","fontWeight":"700"}],"display-hero":["2.75rem",{"lineHeight":"3.5rem","fontWeight":"700"}],"body-sm":["0.875rem",{"lineHeight":"1.375rem","fontWeight":"400"}],"body-lg":["1.125rem",{"lineHeight":"1.75rem","fontWeight":"400"}],"label-sm":["0.75rem",{"lineHeight":"1rem","fontWeight":"600"}],"headline-lg":["2rem",{"lineHeight":"2.75rem","fontWeight":"700"}],"label-lg":["1rem",{"lineHeight":"1.5rem","fontWeight":"600"}],"body-md":["1rem",{"lineHeight":"1.625rem","fontWeight":"400"}]}}}}</script></head><body class="bg-surface text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-xs"><button aria-label="الرجوع للخلف" class="min-w-[44px] min-h-[44px] -mr-2 rounded-full flex items-center justify-center text-on-surface hover:text-primary transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><div class="flex flex-col justify-center"><h1 class="font-label-lg text-label-lg text-on-surface font-semibold leading-tight">Clinician Profile Detail</h1><div class="flex items-center gap-1 mt-0.5"><span class="material-symbols-outlined text-[13px] text-tertiary">verified_user</span><span class="font-label-sm text-label-sm text-tertiary leading-none font-semibold">تشفير طبي فوري معتمد</span></div></div></div><div class="flex items-center gap-space-xs"><button aria-label="اتصال هاتفي سريري فوري" class="min-w-[44px] min-h-[44px] rounded-full flex items-center justify-center text-primary bg-secondary-container/30 hover:bg-secondary-container/50 transition-colors"><span class="material-symbols-outlined text-[20px]">call</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center mr-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full pb-safe">
+<!-- Status Milestone Celebration Banner -->
+<div class="px-margin pt-space-md">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-sm">
+<div class="absolute -top-12 -left-12 w-32 h-32 rounded-full bg-tertiary-container/10 pointer-events-none"></div>
+<div class="flex items-start gap-space-md relative z-10">
+<div class="relative shrink-0">
+<img class="w-16 h-16 rounded-xl object-cover shadow-sm" data-alt="A portrait of an Egyptian female professional nurse wearing modern clinical medical scrubs and a warm, reassuring smile. High resolution studio clinical lighting with hospital-grade clean ambient background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApVeS_LeoXEeLpVUK3rLVdnw0XGSkrZyj19W1lGwmPt7wVXIyKm45SZDoREMvMVxYJ2IwAj0oqeL0wlnGRkJQMO57BemSVH4H1gxOvpLilT5uEJgue9NvMWVJHH0HhTNNCbK3ZrGW4IWZnyStG6ub0kSudbVYIV3ofgY9qGJshgB_Bri0V8J5fmD3ZYEdAqfViGatfXOPvo2XA-KsRJ6lzn7502Ho2oY-A7OUMQsc"/>
+<div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+              مكتملة ومغلقة رسمياً
+            </span>
+<span class="text-secondary font-label-sm text-label-sm">#HC-8812</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-1 truncate">أ. سارة أحمد الشاذلي</h2>
+<p class="font-body-sm text-body-sm text-secondary truncate">أخصائية تمريض منزلي سريري معتمدة</p>
+<div class="mt-2.5 flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm bg-surface-container-low px-2.5 py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0">medical_services</span>
+<span class="truncate">تركيب كانيولا ومحاليل وريدية جفافية وغيار جراحي</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Overall Big Star Rating Card -->
+<div class="px-margin mt-space-md">
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm text-center">
+<div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-secondary-container/40 text-primary mb-2">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<h3 class="font-headline-md-mobile text-headline-md-mobile text-on-surface">كيف كانت تجربتك السريرية الإجمالية؟</h3>
+<p class="font-body-sm text-body-sm text-secondary mt-1">تقييمك يسهم مباشرة في تصنيف الأمان الطبي للممارسين</p>
+<!-- Big Star interactive row -->
+<div class="flex items-center justify-center gap-2 mt-4" dir="ltr" id="overall-star-group">
+<button aria-label="1 star" class="p-1 text-primary transition-transform active:scale-90" onclick="setOverallRating(1)" type="button">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="2 stars" class="p-1 text-primary transition-transform active:scale-90" onclick="setOverallRating(2)" type="button">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="3 stars" class="p-1 text-primary transition-transform active:scale-90" onclick="setOverallRating(3)" type="button">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="4 stars" class="p-1 text-primary transition-transform active:scale-90" onclick="setOverallRating(4)" type="button">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button aria-label="5 stars" class="p-1 text-primary transition-transform active:scale-90" onclick="setOverallRating(5)" type="button">
+<span class="material-symbols-outlined text-[36px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<div class="mt-2 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md" id="overall-score-pill">
+<span class="font-bold">5.0</span>
+<span>من 5 • رعاية طبية ممتازة فائقة الجودة</span>
+</div>
+</div>
+</div>
+<!-- Resolution 54 Clinical Pillars Evaluation -->
+<div class="px-margin mt-space-md">
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">معايير الاعتماد السريري</h4>
+<p class="font-label-sm text-label-sm text-secondary">إلزامية طبية منظمة وفق القرار رقم 54</p>
+</div>
+<span class="material-symbols-outlined text-[22px] text-tertiary">gavel</span>
+</div>
+<div class="space-y-4 mt-2">
+<!-- Criteria 1 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">sanitizer</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">التعقيم والوقاية ومكافحة العدوى</p>
+<p class="font-label-sm text-label-sm text-secondary">ارتداء القفازات الطبية وتطهير بيئة العمل والمعدات</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary" data-group="c1" dir="ltr">
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<!-- Criteria 2 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">clinical_notes</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">الالتزام بالبروتوكول السريري</p>
+<p class="font-label-sm text-label-sm text-secondary">تنفيذ تعليمات الطبيب المعالج وجرعات المحاليل بدقة</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary" data-group="c2" dir="ltr">
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<!-- Criteria 3 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">schedule</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">دقة المواعيد وسرعة الاستجابة</p>
+<p class="font-label-sm text-label-sm text-secondary">الوصول الميداني في نافذة التوقيت المحددة بدقة</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary" data-group="c3" dir="ltr">
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<!-- Criteria 4 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">volunteer_activism</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">اللباقة والدعم النفسي والإنساني</p>
+<p class="font-label-sm text-label-sm text-secondary">التعامل الرؤوف وتهدئة روع المريض وذويه</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary" data-group="c4" dir="ltr">
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<!-- Criteria 5 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">delete_forever</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">إدارة النفايات والأدوات الحادة</p>
+<p class="font-label-sm text-label-sm text-secondary">التخلص الآمن في الحاوية الصفراء الحيوية المخصصة</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary" data-group="c5" dir="ltr">
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[22px] cursor-pointer" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Clinical Compliments Tags -->
+<div class="px-margin mt-space-md">
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-[20px] text-primary">thumb_up</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">إشادات سريعة تميزت بها الزيارة</h4>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mb-3">حدد النقاط الإيجابية التي لمستها أثناء تقديم الخدمة:</p>
+<div class="flex flex-wrap gap-2" id="tag-cloud">
+<button class="tag-chip flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md transition-colors" onclick="toggleTag(this)" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+<span>دقة فائقة في الكانيولا دون ألم</span>
+</button>
+<button class="tag-chip flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md transition-colors" onclick="toggleTag(this)" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+<span>تعقيم كامل والتزام صارم</span>
+</button>
+<button class="tag-chip flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md transition-colors" onclick="toggleTag(this)" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+<span>لباقة واحترام لكبار السن</span>
+</button>
+<button class="tag-chip flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md transition-colors" onclick="toggleTag(this)" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+<span>وصول في الموعد تماماً</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Clinical Comment Box -->
+<div class="px-margin mt-space-md">
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<label class="font-headline-sm text-headline-sm text-on-surface" for="review-notes">ملاحظاتك السريرية وتجربتك</label>
+<span class="font-label-sm text-label-sm text-secondary">اختياري</span>
+</div>
+<textarea class="w-full rounded-lg bg-surface-container-low p-space-sm font-body-md text-body-md text-on-surface placeholder:text-outline outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all resize-none" id="review-notes" placeholder="اكتب تجربتك مع الممارس لمساعدة المرضى الآخرين في اتخاذ القرار الطبي الصحيح..." rows="4"></textarea>
+<div class="flex justify-between items-center mt-2 text-secondary font-label-sm text-label-sm">
+<span>احرص على عدم ذكر تفاصيل تشخيصية شخصية شديدة الحساسية</span>
+<span>0 / 500</span>
+</div>
+</div>
+</div>
+<!-- Medical Privacy & Resolution 55 Compliance Card -->
+<div class="px-margin mt-space-md">
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-[22px] text-primary">security</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">حماية الخصوصية ومأمونية البيانات</h4>
+</div>
+<!-- Toggle Container -->
+<label class="flex items-start gap-3 p-3 rounded-lg bg-secondary-container/20 cursor-pointer">
+<input checked="" class="mt-1 w-5 h-5 rounded text-primary accent-primary cursor-pointer shrink-0" type="checkbox"/>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface font-semibold leading-tight">
+            إخفاء اسم وهوية المريض عند نشر المراجعة للعامة
+          </p>
+<p class="font-body-sm text-body-sm text-on-secondary-container mt-1">
+            سيتم عرض الحرف الأول والحي الجغرافي فقط (مثال: عائلة مريض بالمعادي)، حمايةً للخصوصية الطبية للمريض والأسرة بموجب أحكام القانون رقم 151 لسنة 2020 لحماية البيانات الشخصية.
+          </p>
+</div>
+</label>
+<!-- Regulatory Quality Filter Note -->
+<div class="mt-3 flex items-start gap-2.5 p-3 rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-[18px] text-tertiary shrink-0 mt-0.5">policy</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+<strong>إشعار رقابي وفق القرار #55:</strong> تخضع كافة المراجعات للتدقيق الآلي والسريري للتحقق من خلوها من أي عبارات تشهير أو إفشاء أسرار طبية وراثية أو شخصية قبل اعتمادها للنشر على المنصة.
+        </p>
+</div>
+</div>
+</div>
+<!-- Mutual Professional Feedback Notice (Resolution 53 & 112) -->
+<div class="px-margin mt-space-md">
+<div class="rounded-xl bg-secondary-container/30 p-space-md flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">sync_alt</span>
+</div>
+<div>
+<h5 class="font-label-lg text-label-lg text-on-surface font-semibold">منظومة التقييم السريري التبادلي</h5>
+<p class="font-body-sm text-body-sm text-secondary mt-1 leading-relaxed">
+          وفقاً للقرار رقم 53 المنظم لسلامة الطواقم الطبية الميدانية، يقوم الممارس الصحي بإبداء تقييم موازٍ لجاهزية بيئة الزيارة المنزلية وسلامة التواجد السريري وتعاون المريض، لبناء سجل موثوقية متكامل لكلا الطرفين.
+        </p>
+</div>
+</div>
+</div>
+<!-- Action CTAs Section -->
+<div class="px-margin mt-space-lg mb-space-lg flex flex-col gap-3">
+<button class="w-full h-12 bg-primary text-on-primary rounded-lg font-label-lg text-label-lg font-semibold shadow-md active:bg-primary-container transition-all flex items-center justify-center gap-2" id="submit-review-btn" onclick="submitClinicalReview()" type="button">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+<span>إرسال التقييم وتثبيت الاعتماد السريري</span>
+</button>
+<button class="w-full h-11 bg-transparent text-secondary rounded-lg font-label-md text-label-md font-semibold hover:bg-surface-container-high transition-colors flex items-center justify-center" onclick="history.back()" type="button">
+      تخطي التقييم والعودة للرئيسية
+    </button>
+</div>
+</div>
+<script>
+  function setOverallRating(rating) {
+    const starGroup = document.getElementById('overall-star-group');
+    if (!starGroup) return;
+    const stars = starGroup.querySelectorAll('button span');
+    const pill = document.getElementById('overall-score-pill');
+    
+    stars.forEach((s, idx) => {
+      if (idx < rating) {
+        s.style.fontVariationSettings = "'FILL' 1";
+        s.parentElement.classList.add('text-primary');
+        s.parentElement.classList.remove('text-outline-variant');
+      } else {
+        s.style.fontVariationSettings = "'FILL' 0";
+        s.parentElement.classList.remove('text-primary');
+        s.parentElement.classList.add('text-outline-variant');
+      }
+    });
+
+    const labels = [
+      '1.0 من 5 • بحاجة إلى تدقيق سريري عاجل',
+      '2.0 من 5 • مستوى دون التوقعات المهنية',
+      '3.0 من 5 • رعاية طبية مقبولة',
+      '4.0 من 5 • رعاية سريرية ممتازة وملتزمة',
+      '5.0 من 5 • رعاية طبية ممتازة فائقة الجودة'
+    ];
+    if (pill) {
+      pill.innerHTML = `<span class="font-bold">${rating}.0</span> <span>${labels[rating - 1]}</span>`;
+    }
+  }
+
+  function toggleTag(btn) {
+    const isSelected = btn.classList.contains('bg-primary');
+    if (isSelected) {
+      btn.classList.remove('bg-primary', 'text-on-primary');
+      btn.classList.add('bg-surface-container', 'text-on-surface-variant');
+      const icon = btn.querySelector('.material-symbols-outlined');
+      if (icon) icon.classList.replace('text-on-primary', 'text-tertiary');
+    } else {
+      btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+      btn.classList.add('bg-primary', 'text-on-primary');
+      const icon = btn.querySelector('.material-symbols-outlined');
+      if (icon) icon.classList.replace('text-tertiary', 'text-on-primary');
+    }
+  }
+
+  document.querySelectorAll('[data-group]').forEach(group => {
+    const stars = group.querySelectorAll('span');
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        stars.forEach((s, i) => {
+          if (i <= index) {
+            s.style.fontVariationSettings = "'FILL' 1";
+            s.classList.remove('text-outline-variant');
+            s.classList.add('text-primary');
+          } else {
+            s.style.fontVariationSettings = "'FILL' 0";
+            s.classList.remove('text-primary');
+            s.classList.add('text-outline-variant');
+          }
+        });
+      });
+    });
+  });
+
+  function submitClinicalReview() {
+    const btn = document.getElementById('submit-review-btn');
+    if (!btn) return;
+    btn.disabled = true;
+    btn.innerHTML = `
+      <span class="material-symbols-outlined text-[20px] animate-spin">progress_activity</span>
+      <span>جاري اعتماد وحفظ التقييم رسمياً...</span>
+    `;
+    setTimeout(() => {
+      btn.classList.remove('bg-primary');
+      btn.classList.add('bg-tertiary');
+      btn.innerHTML = `
+        <span class="material-symbols-outlined text-[20px]">check_circle</span>
+        <span>تم توثيق التقييم بنجاح وحماية السجل</span>
+      `;
+      setTimeout(() => {
+        window.history.back();
+      }, 1200);
+    }, 900);
+  }
+</script></main></body></html>

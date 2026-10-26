@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#f6fafd;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container-low": "#f0f4f7", "on-primary": "#ffffff", "surface-container-lowest": "#ffffff", "on-secondary-fixed": "#001d35", "on-tertiary": "#ffffff", "surface-container-high": "#e5e9ec", "surface-container-highest": "#dfe3e6", "on-error": "#ffffff", "secondary": "#47607d", "outline-variant": "#c1c7d3", "tertiary-fixed-dim": "#5fdca9", "on-secondary-container": "#48617e", "surface-variant": "#dfe3e6", "secondary-container": "#c2dcfe", "surface-dim": "#d6dbdd", "on-primary-container": "#d5e4ff", "secondary-fixed": "#d1e4ff", "on-primary-fixed-variant": "#004882", "on-tertiary-fixed-variant": "#005138", "tertiary": "#00593e", "inverse-primary": "#a3c9ff", "primary-fixed": "#d3e4ff", "on-surface-variant": "#414751", "surface": "#f6fafd", "on-primary-fixed": "#001c38", "background": "#f6fafd", "surface-bright": "#f6fafd", "outline": "#717782", "on-tertiary-container": "#7efbc5", "tertiary-container": "#007451", "surface-container": "#eaeef1", "on-secondary-fixed-variant": "#2f4964", "error-container": "#ffdad6", "secondary-fixed-dim": "#afc9ea", "on-tertiary-fixed": "#002114", "primary": "#004f8d", "on-secondary": "#ffffff", "error": "#ba1a1a", "tertiary-fixed": "#7df9c4", "surface-tint": "#0060aa", "inverse-surface": "#2c3134", "on-background": "#171c1f", "primary-fixed-dim": "#a3c9ff", "on-surface": "#171c1f", "inverse-on-surface": "#edf1f4", "primary-container": "#1267b2", "on-error-container": "#93000a" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-sm": "0.5rem", "space-md": "1rem", "gutter": "1rem", "space-xl": "2rem", "margin-md": "1.5rem", "margin": "1rem", "gutter-md": "1.5rem", "space-xs": "0.25rem", "margin-lg": "2.5rem", "gutter-lg": "2rem", "space-lg": "1.5rem" }, fontFamily: { "body-sm": ["IBM Plex Sans"], "body-lg": ["IBM Plex Sans"], "headline-md-mobile": ["IBM Plex Sans"], "headline-lg": ["IBM Plex Sans"], "label-sm": ["IBM Plex Sans"], "body-md": ["IBM Plex Sans"], "label-lg": ["IBM Plex Sans"], "headline-lg-mobile": ["IBM Plex Sans"], "headline-md": ["IBM Plex Sans"], "display-hero": ["IBM Plex Sans"], "headline-sm": ["IBM Plex Sans"], "display-hero-mobile": ["IBM Plex Sans"], "label-md": ["IBM Plex Sans"] }, fontSize: { "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "fontWeight": "400" }], "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }], "headline-md-mobile": ["1.25rem", { "lineHeight": "1.875rem", "fontWeight": "600" }], "headline-lg": ["2rem", { "lineHeight": "2.75rem", "fontWeight": "700" }], "label-sm": ["0.75rem", { "lineHeight": "1rem", "fontWeight": "600" }], "body-md": ["1rem", { "lineHeight": "1.625rem", "fontWeight": "400" }], "label-lg": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "600" }], "headline-lg-mobile": ["1.5rem", { "lineHeight": "2.25rem", "fontWeight": "600" }], "headline-md": ["1.5rem", { "lineHeight": "2.25rem", "fontWeight": "600" }], "display-hero": ["2.75rem", { "lineHeight": "3.5rem", "fontWeight": "700" }], "headline-sm": ["1.25rem", { "lineHeight": "1.875rem", "fontWeight": "600" }], "display-hero-mobile": ["2rem", { "lineHeight": "2.75rem", "fontWeight": "700" }], "label-md": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-gutter flex items-center justify-between"><div class="flex items-center gap-space-xs"><button aria-label="الرجوع للخلف" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-on-surface hover:text-primary active:scale-95 transition-all" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[24px] rotate-180">arrow_back_ios_new</span></button><h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight truncate leading-tight">Visit Details</h1></div><div class="flex items-center gap-space-xs"><button aria-label="الطوارئ الطبية" class="min-w-[44px] min-h-[44px] p-space-xs flex items-center justify-center rounded-lg bg-error-container text-on-error-container active:scale-95 transition-all" type="button"><span class="material-symbols-outlined text-[20px]">e911_emergency</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 bg-surface pb-safe"><div class="flex flex-col w-full px-gutter pb-space-xl gap-space-md">
+<!-- Completion Celebration & Status Banner -->
+<section class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-sm">
+<div class="absolute -left-6 -top-6 w-28 h-28 bg-tertiary-fixed-dim/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start justify-between gap-space-sm relative z-10">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container text-on-tertiary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">اكتملت الزيارة بنجاح</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary/10 text-tertiary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+              معتمدة رقمياً
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">رقم السجل: HC-8942 • توثيق وزارة الصحة</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-md bg-surface-container text-secondary font-label-sm text-label-sm font-semibold shrink-0">
+        منتهية
+      </span>
+</div>
+<!-- Nurse & Patient Summary Mosaic -->
+<div class="mt-space-md grid grid-cols-2 gap-space-sm pt-space-sm border-t-0 bg-surface-container-low/60 rounded-lg p-space-sm">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="w-9 h-9 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0 font-label-md">
+<span class="material-symbols-outlined text-[20px]">medical_services</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">الممرض المعتمد</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">أحمد سامي</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center shrink-0 font-label-md">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">المريض المستفيد</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate">محمد الشناوي</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Precise Duration & Compliance Counter (Decisions 171, 172, 189) -->
+<section class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">timer</span>
+<h2 class="font-label-lg text-label-lg text-on-surface font-bold">حساب المدة الدقيقة للجلسة</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm">
+        قرار 171 و 172
+      </span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+<span class="font-body-sm text-body-sm text-on-surface">البدء بالتحقق الثنائي: <strong class="font-label-md">02:15 م</strong></span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="font-body-sm text-body-sm text-on-surface">وقت الانتهاء: <strong class="font-label-md">02:57 م</strong></span>
+</div>
+</div>
+<!-- Time Bar Visual -->
+<div class="relative w-full h-3 rounded-full bg-surface-container-highest overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 71.4%;"></div>
+<div class="h-full bg-secondary-fixed-dim" style="width: 28.6%;"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+          30 دقيقة أساسية (280 ج.م)
+        </span>
+<span class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim inline-block"></span>
+          12 دقيقة إضافية (42 ج.م)
+        </span>
+</div>
+<div class="p-space-xs rounded bg-surface-container-high/60 flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-tertiary">shield_lock</span>
+<span class="font-body-sm text-body-sm">
+          إجمالي الوقت: <strong class="text-on-surface font-semibold">42 دقيقة</strong>. لم يتم تخطي السقف الزمني الأوتوماتيكي وفق القرار 189.
+        </span>
+</div>
+</div>
+</section>
+<!-- Clinical Vitals & Interventions (Decisions 93 & 97) -->
+<section class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">vital_signs</span>
+<h2 class="font-label-lg text-label-lg text-on-surface font-bold">التقرير السريري والإجراءات</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+        قرار 93 و 97
+      </span>
+</div>
+<!-- Vitals Micro-Grid -->
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-error">cardiology</span>
+          ضغط الدم
+        </span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">125/82</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ملم زئبق</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary mt-0.5">طبيعي ومستقر</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">bloodtype</span>
+          سكر الدم عشوائي
+        </span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">138</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">مجم/دل</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary mt-0.5">ضمن المعدل المطلوب</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">monitor_heart</span>
+          معدل النبض
+        </span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">74</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">ن/دقيقة</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary mt-0.5">منتظم</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary-container">thermostat</span>
+          درجة الحرارة
+        </span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">37.1</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">°م</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary mt-0.5">طبيعية</span>
+</div>
+</div>
+<!-- Completed Procedures -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-md text-label-md text-on-surface font-semibold">الإجراءات التمريضية المنفذة:</span>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5 shrink-0" style="font-variation-settings: 'FILL' 1;">vaccines</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">محلول وريدي تعويضي</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            إعطاء 500 مل محلول ملحي 0.9% عبر كانيولا مقاس 20G معقمة في الذراع الأيسر بدون أي ارتشاح.
+          </p>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5 shrink-0" style="font-variation-settings: 'FILL' 1;">healing</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">غيار جراحي معقم</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            تطهير الجرح بمحلول بوفيدون يودين (بيتادين) وتغطيته بشاش معقم. حواف الجرح نظيفة والتئام الأنسجة سليم تماماً.
+          </p>
+</div>
+</div>
+</div>
+<!-- Clinical Nurse Note -->
+<div class="p-space-sm rounded-lg bg-surface-container-high/40 flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">edit_note</span>
+          ملاحظة الممرض السريرية المعتمدة
+        </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">02:55 م</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic">
+        "المريض في حالة وعي وتجاوب ممتاز، لا توجد شكوى من دوار أو ألم حاد. تم التوصية بشرب سوائل إضافية وقياس الضغط غداً صباحاً."
+      </p>
+<div class="flex items-center gap-1 text-on-secondary-container mt-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+        سجل طبي دائم غير قابل للحذف - تصحيح إلحاقي فقط وفق القرار رقم 97.
+      </div>
+</div>
+</section>
+<!-- Transparent Invoice Breakdown & Dual Payment (Decisions 174, 175, 192) -->
+<section class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">receipt_long</span>
+<h2 class="font-label-lg text-label-lg text-on-surface font-bold">الفاتورة الطبية الشفافة</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+        قرارات 174 / 175
+      </span>
+</div>
+<div class="flex flex-col gap-space-xs divide-y-0">
+<div class="flex items-center justify-between py-1">
+<span class="font-body-sm text-body-sm text-on-surface-variant">الخدمة التمريضية الأساسية (30 دقيقة)</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">280 ج.م</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="font-body-sm text-body-sm text-on-surface-variant">الدقائق الإضافية المعتمدة (12 د × 3.5 ج.م)</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">42 ج.م</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface-variant">رسوم الانتقال الطبي والتعقيم</span>
+<span class="font-label-sm text-label-sm text-outline">المسافة الفعلية: 4.2 كم</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-semibold">45 ج.م</span>
+</div>
+<div class="pt-space-sm mt-space-xs bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">الإجمالي المستحق</span>
+<div class="text-left">
+<span class="font-headline-md-mobile text-headline-md-mobile font-bold text-primary">367</span>
+<span class="font-label-md text-label-md text-primary mr-1">ج.م</span>
+</div>
+</div>
+</div>
+<!-- Dual Payment Option Selection (Online vs Cash with Dual Check) -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<span class="font-label-md text-label-md text-on-surface font-semibold">طريقة السداد وتأكيد الاستلام:</span>
+<div class="grid grid-cols-2 gap-space-sm">
+<label class="cursor-pointer rounded-lg bg-surface-container-low p-space-sm flex flex-col gap-2 transition-all shadow-sm" id="pay-card-label">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary text-[24px]">credit_card</span>
+<input checked="" class="accent-primary w-4 h-4" name="payment_method" onchange="togglePaymentMode(this.value)" type="radio" value="card"/>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">سداد إلكتروني فوري</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">فيزا، ماستركارد، ميزة</div>
+</div>
+</label>
+<label class="cursor-pointer rounded-lg bg-surface-container-low p-space-sm flex flex-col gap-2 transition-all" id="pay-cash-label">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-secondary text-[24px]">payments</span>
+<input class="accent-primary w-4 h-4" name="payment_method" onchange="togglePaymentMode(this.value)" type="radio" value="cash"/>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold">دفع نقدي للممرض</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">كاش يدوي موثق</div>
+</div>
+</label>
+</div>
+<!-- Mutual Cash Handover Toggle (Decisions 47 & 175) -->
+<div class="hidden bg-surface-container p-space-sm rounded-lg flex-col gap-space-xs transition-all" id="cash-handover-panel">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[20px]">handshake</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">تأكيد استلام المبلغ المشترك</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary bg-tertiary/10 px-2 py-0.5 rounded-full">القرار 175</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          قم بتفعيل المفتاح لتأكيد تسليم مبلغ <strong class="text-on-surface">367 ج.م</strong> نقداً للممرض أحمد سامي يداً بيد لتسوية الفاتورة ومنع النزاعات المالية.
+        </p>
+<label class="flex items-center justify-between pt-2 cursor-pointer">
+<span class="font-label-sm text-label-sm text-on-surface font-bold">أقر بأنني قمت بتسليم كامل المبلغ للممرض</span>
+<input class="w-5 h-5 rounded accent-primary cursor-pointer" id="cash-confirmed-check" type="checkbox"/>
+</label>
+</div>
+</div>
+</section>
+<!-- Mutual Professional Rating (Decisions 53 & 54) -->
+<section class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">reviews</span>
+<h2 class="font-label-lg text-label-lg text-on-surface font-bold">تقييم جودة الرعاية والزيارة</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+        قرار 53 و 54
+      </span>
+</div>
+<!-- Rating Pillars -->
+<div class="flex flex-col gap-space-sm">
+<!-- Hygiene Pillar -->
+<div class="flex items-center justify-between bg-surface-container-low rounded-lg p-space-sm">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-[18px]">clean_hands</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">التعقيم ومكافحة العدوى</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">استخدام القفازات والأدوات المعقمة</span>
+</div>
+</div>
+<div class="flex items-center gap-1" id="hygiene-stars">
+<button aria-label="نجمة 1" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('hygiene', 1)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button aria-label="نجمة 2" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('hygiene', 2)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button aria-label="نجمة 3" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('hygiene', 3)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button aria-label="نجمة 4" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('hygiene', 4)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button aria-label="نجمة 5" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('hygiene', 5)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+</div>
+</div>
+<!-- Professional Standards -->
+<div class="flex items-center justify-between bg-surface-container-low rounded-lg p-space-sm">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">المهنية والبروتوكول الطبي</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">دقة تنفيذ تعليمات الطبيب</span>
+</div>
+</div>
+<div class="flex items-center gap-1" id="standards-stars">
+<button aria-label="نجمة 1" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('standards', 1)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button aria-label="نجمة 2" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('standards', 2)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button aria-label="نجمة 3" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('standards', 3)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button aria-label="نجمة 4" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('standards', 4)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button aria-label="نجمة 5" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('standards', 5)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+</div>
+</div>
+<!-- Punctuality -->
+<div class="flex items-center justify-between bg-surface-container-low rounded-lg p-space-sm">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">دقة المواعيد والحضور</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">الالتزام بالوقت المحدد للزيارة</span>
+</div>
+</div>
+<div class="flex items-center gap-1" id="punctuality-stars">
+<button aria-label="نجمة 1" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('punctuality', 1)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button aria-label="نجمة 2" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('punctuality', 2)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button aria-label="نجمة 3" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('punctuality', 3)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button aria-label="نجمة 4" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('punctuality', 4)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+<button aria-label="نجمة 5" class="text-primary hover:scale-110 active:scale-95 transition-transform" onclick="setStars('punctuality', 5)" type="button"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span></button>
+</div>
+</div>
+</div>
+</section>
+<!-- Final Action Button & Confirmation Drawer Anchor -->
+<section class="mt-space-xs flex flex-col gap-space-sm">
+<button class="w-full h-12 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-space-xs shadow-md active:scale-[0.99] transition-all hover:bg-primary-container" id="submit-visit-btn" onclick="handleFinalizeVisit()" type="button">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+<span>إنهاء الزيارة وحفظ التقرير نهائياً</span>
+</button>
+<div class="flex items-center justify-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">lock_clock</span>
+<span>يتم تشفير وإرسال نسخة طبق الأصل لملف التأمين والمريض فوراً</span>
+</div>
+</section>
+<!-- Toast Notification Container for Delighting the Clinician & Family -->
+<div class="fixed bottom-6 left-4 right-4 bg-inverse-surface text-inverse-on-surface p-space-md rounded-xl shadow-xl z-50 flex items-center gap-space-sm transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none" id="confirmation-toast">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed-dim text-on-tertiary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">done_all</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-bold">تم توثيق الزيارة وحفظ السجل بنجاح</span>
+<span class="font-body-sm text-body-sm opacity-90 truncate">تم إرسال الفاتورة والتقرير للجهات المعتمدة. شكراً لكم!</span>
+</div>
+</div>
+</div>
+<script>
+  function togglePaymentMode(method) {
+    var cashPanel = document.getElementById('cash-handover-panel');
+    var cardLabel = document.getElementById('pay-card-label');
+    var cashLabel = document.getElementById('pay-cash-label');
+
+    if (method === 'cash') {
+      cashPanel.classList.remove('hidden');
+      cashPanel.classList.add('flex');
+      cashLabel.classList.add('bg-primary-fixed');
+      cardLabel.classList.remove('bg-primary-fixed');
+    } else {
+      cashPanel.classList.add('hidden');
+      cashPanel.classList.remove('flex');
+      cardLabel.classList.add('bg-primary-fixed');
+      cashLabel.classList.remove('bg-primary-fixed');
+    }
+  }
+
+  function setStars(category, count) {
+    var container = document.getElementById(category + '-stars');
+    if (!container) return;
+    var buttons = container.getElementsByTagName('button');
+    for (var i = 0; i < buttons.length; i++) {
+      var icon = buttons[i].getElementsByTagName('span')[0];
+      if (i < count) {
+        icon.style.fontVariationSettings = "'FILL' 1";
+        buttons[i].classList.remove('text-outline-variant');
+        buttons[i].classList.add('text-primary');
+      } else {
+        icon.style.fontVariationSettings = "'FILL' 0";
+        buttons[i].classList.remove('text-primary');
+        buttons[i].classList.add('text-outline-variant');
+      }
+    }
+  }
+
+  function handleFinalizeVisit() {
+    var cashRadio = document.querySelector('input[name="payment_method"][value="cash"]');
+    var cashCheck = document.getElementById('cash-confirmed-check');
+
+    if (cashRadio && cashRadio.checked && !cashCheck.checked) {
+      alert('يرجى تأكيد استلام المبلغ نقداً المشترك أولاً لتفادي أي نزاعات مالية وفق القرار 175.');
+      return;
+    }
+
+    var btn = document.getElementById('submit-visit-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">progress_activity</span> جاري الحفظ والتوثيق...';
+
+    setTimeout(function() {
+      btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check_circle</span> تم الحفظ بنجاح';
+      btn.classList.remove('bg-primary');
+      btn.classList.add('bg-tertiary');
+      
+      var toast = document.getElementById('confirmation-toast');
+      toast.classList.remove('translate-y-32', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(function() {
+        toast.classList.add('translate-y-32', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 4000);
+    }, 900);
+  }
+</script></main></body></html>

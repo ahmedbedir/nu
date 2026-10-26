@@ -301,6 +301,30 @@ class BookingFlowTest extends TestCase
             ->assertJsonPath('code', 'booking_not_ready');
     }
 
+    public function test_eligibility_endpoint_reports_outcome_without_creating_a_booking(): void
+    {
+        [$customer, $patient] = $this->bookableSetup();
+
+        $service = Service::factory()->create([
+            'red_flag_screen' => [
+                ['field' => 'chest_pain', 'op' => 'true', 'code' => 'cardiac_red_flag', 'severity' => 'hard'],
+            ],
+        ]);
+
+        Sanctum::actingAs($customer);
+
+        $res = $this->postJson('/api/v1/bookings/eligibility', [
+            'patient_public_id' => $patient->public_id,
+            'service_public_id' => $service->public_id,
+            'form_answers' => ['chest_pain' => true],
+        ])->assertOk();
+
+        $this->assertSame('rejected_red_flag', $res->json('outcome'));
+        $this->assertFalse($res->json('can_dispatch'));
+        $this->assertSame('red_flag_emergency_guidance', $res->json('guidance'));
+        $this->assertDatabaseCount('bookings', 0);
+    }
+
     public function test_quote_contains_callout_and_commission_is_tracked(): void
     {
         [$customer, $patient, $address, $service] = $this->bookableSetup();

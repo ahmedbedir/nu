@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Domain\Booking\Services\BookingService;
 use App\Domain\Booking\Services\DispatchService;
+use App\Domain\Clinical\Services\EligibilityScreening;
 use App\Domain\Patients\Services\PatientAccess;
 use App\Models\Booking;
 use App\Models\BookingQuote;
@@ -20,7 +21,41 @@ class BookingController extends Controller
         private readonly BookingService $bookings,
         private readonly DispatchService $dispatch,
         private readonly PatientAccess $patients,
+        private readonly EligibilityScreening $screening,
     ) {}
+
+    /**
+     * POST /api/v1/bookings/eligibility
+     *
+     * Runs the deterministic screen without creating anything, so the UI can show
+     * the safety outcome (and emergency guidance) before a booking exists.
+     */
+    public function eligibility(Request $request): JsonResponse
+    {
+        $data = $request->validate([
+            'patient_public_id' => ['required', 'string'],
+            'service_public_id' => ['required', 'string'],
+            'form_answers' => ['nullable', 'array'],
+        ]);
+
+        $patient = Patient::query()->where('public_id', $data['patient_public_id'])->firstOrFail();
+
+        if (! $this->patients->canBook($request->user(), $patient)) {
+            abort(403);
+        }
+
+        $service = Service::query()->where('public_id', $data['service_public_id'])->firstOrFail();
+
+        $result = $this->screening->screen($service, $patient, $data['form_answers'] ?? []);
+
+        return response()->json([
+            'outcome' => $result['outcome'],
+            'reasons' => $result['reasons'],
+            'missing' => $result['missing'],
+            'guidance' => $result['guidance'],
+            'can_dispatch' => $this->screening->canDispatch($result),
+        ]);
+    }
 
     /** POST /api/v1/bookings */
     public function store(Request $request): JsonResponse
