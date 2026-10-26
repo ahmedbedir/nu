@@ -1,13 +1,21 @@
 /**
- * Minimal typed API client for the Laravel backend.
+ * Typed API client for the Laravel backend.
  *
- * The token is held in memory plus localStorage so a page refresh keeps the session;
- * every failure surfaces as a typed result rather than a thrown surprise in the UI.
+ * The token is held in localStorage so a refresh keeps the session. Every failure
+ * is returned as a typed result — including the backend's machine `code` and
+ * `details` — so screens can render the right state instead of a generic error.
  */
 
 export type ApiResult<T> =
   | { ok: true; data: T }
-  | { ok: false; status: number; message: string; code?: string; errors?: Record<string, string[]> };
+  | {
+      ok: false;
+      status: number;
+      message: string;
+      code?: string;
+      errors?: Record<string, string[]>;
+      details?: Record<string, unknown>;
+    };
 
 // Server-side rendering needs an absolute URL; the browser uses the rewrite proxy.
 const CLIENT_BASE = process.env.NEXT_PUBLIC_API_BASE || '/backend/v1';
@@ -30,15 +38,11 @@ export function setToken(token: string | null): void {
     if (token) window.localStorage.setItem(TOKEN_KEY, token);
     else window.localStorage.removeItem(TOKEN_KEY);
   } catch {
-    /* storage may be unavailable in private mode — session simply won't persist */
+    /* storage may be unavailable in private mode */
   }
 }
 
-async function request<T>(
-  path: string,
-  init: RequestInit = {},
-  withAuth = true,
-): Promise<ApiResult<T>> {
+async function request<T>(path: string, init: RequestInit = {}, withAuth = true): Promise<ApiResult<T>> {
   const headers = new Headers(init.headers);
   headers.set('Accept', 'application/json');
 
@@ -69,6 +73,7 @@ async function request<T>(
       message: (payload?.message as string) || 'request_failed',
       code: payload?.code as string | undefined,
       errors: payload?.errors as Record<string, string[]> | undefined,
+      details: payload?.details as Record<string, unknown> | undefined,
     };
   }
 
@@ -83,7 +88,7 @@ function safeJson(text: string): any {
   }
 }
 
-// --- endpoints ---------------------------------------------------------
+// --- types -------------------------------------------------------------
 
 export interface ServiceItem {
   public_id: string;
@@ -111,6 +116,48 @@ export interface PatientItem {
   allergies_state: 'known' | 'unknown';
   status: string;
 }
+
+export interface AddressItem {
+  public_id: string;
+  label: string | null;
+  address_line: string;
+  building?: string | null;
+  floor?: string | null;
+  apartment?: string | null;
+  landmark?: string | null;
+  latitude: string | null;
+  longitude: string | null;
+  verification_status: string;
+  is_default: boolean;
+}
+
+export interface QuoteLine {
+  kind: string;
+  description_ar: string;
+  description_en: string;
+  quantity: string;
+  unit_price: string;
+  amount: string;
+  commissionable: boolean;
+}
+
+export interface BookingSummary {
+  public_id: string;
+  state: string;
+  scheduled_for?: string | null;
+  confirmed_at?: string | null;
+  professional_profile_id?: number | null;
+  visit_address_id?: string | null;
+}
+
+export interface ScreeningDetails {
+  outcome: string;
+  reasons: string[];
+  missing: string[];
+  guidance: string | null;
+}
+
+// --- endpoints ---------------------------------------------------------
 
 export const api = {
   health: () => request<{ status: string }>('/health', {}, false),
@@ -145,4 +192,75 @@ export const api = {
     sex: string;
     relationship: string;
   }) => request<{ patient: PatientItem }>('/patients', { method: 'POST', body: JSON.stringify(payload) }),
+
+  addresses: (patientId: string) => request<{ data: AddressItem[] }>(`/patients/${patientId}/addresses`),
+
+  createAddress: (
+    patientId: string,
+    payload: {
+      label?: string;
+      address_line: string;
+      building?: string;
+      floor?: string;
+      apartment?: string;
+      landmark?: string;
+      latitude: number;
+      longitude: number;
+      is_default?: boolean;
+    },
+  ) =>
+    request<{ address: AddressItem }>(`/patients/${patientId}/addresses`, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
+  createBooking: (payload: {
+    patient_public_id: string;
+    address_public_id: string;
+    service_public_id: string;
+    required_gender: 'male' | 'female';
+    form_answers?: Record<string, unknown>;
+    requested_for?: string;
+  }) =>
+    request<{ booking: BookingSummary }>('/bookings', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
+  searchBooking: (bookingId: string) =>
+    request<{
+      booking: BookingSummary;
+      candidates: number;
+      wave: { public_id: string; expires_at: string | null; offers: Array<{ public_id: string }> } | null;
+    }>(`/bookings/${bookingId}/search`, { method: 'POST' }),
+
+  quoteBooking: (bookingId: string) =>
+    request<{
+      quote: { public_id: string; version: number; lines: QuoteLine[]; subtotal: string; total: string; currency: string };
+    }>(`/bookings/${bookingId}/quote`, { method: 'POST' }),
+
+  confirmBooking: (bookingId: string, quoteVersion: number) =>
+    request<{ booking: BookingSummary }>(`/bookings/${bookingId}/confirm`, {
+      method: 'POST',
+      body: JSON.stringify({ quote_id: quoteVersion }),
+    }),
+
+  booking: (bookingId: string) => request<{ booking: BookingSummary }>(`/bookings/${bookingId}`),
+
+  raiseSos: (payload: {
+    reporter_role: 'customer' | 'professional';
+    booking_public_id?: string;
+    latitude?: number;
+    longitude?: number;
+  }) =>
+    request<{ incident: { public_id: string; state: string }; notified: boolean; sms_delivered: boolean | null }>(
+      '/sos',
+      { method: 'POST', body: JSON.stringify(payload) },
+    ),
+
+  grantConsent: (purpose: string, granted: boolean, version = 'v1') =>
+    request<{ consent: { purpose: string; granted: boolean } }>('/consents', {
+      method: 'POST',
+      body: JSON.stringify({ purpose, granted, version }),
+    }),
 };

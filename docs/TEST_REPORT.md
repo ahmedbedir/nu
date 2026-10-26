@@ -114,6 +114,26 @@
 | T-008 | UNKNOWN required answer creates `requires_information` and cannot dispatch | PASS |
 | — | Soft clinical flag creates `clinical_review_pending` and cannot dispatch | PASS |
 
+## Run 2026-10-26 — Addresses, presence, offers and operations stream
+
+**6 new tests / 12 assertions. Cumulative: 92 passed, 306 assertions, 0 failed**
+
+| Case | What it proves | Result |
+|---|---|---|
+| Address creation | A customer-created visit address is stored verified with coordinates | PASS |
+| Address bounds | Coordinates outside Egypt are rejected (422) | PASS |
+| Address ownership | Another account cannot add an address to someone else's patient (403) | PASS |
+| Presence gate | Going online without coordinates is refused (`fresh_location_required`) | PASS |
+| Presence freshness | Online with fresh coordinates marks `fresh_for_instant` | PASS |
+| Offer inbox | Only the professional's own live offers are listed | PASS |
+
+Also verified in this run:
+
+- `apps/customer-web` production build passes with the new `/book/[serviceId]` route.
+- `apps/admin` production build passes with the authenticated SSE operations stream.
+- The operations room shows `Live` / `Connecting` / `Denied or disconnected` instead of
+  inventing bookings, and renders real booking and SOS events as they arrive.
+
 ### Browser / HTTP verification — 2026-10-25
 
 | Surface | Command / URL | Result |

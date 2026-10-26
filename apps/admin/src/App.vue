@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
-import { api, getToken, setToken } from './lib/api';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { api, getToken, openOperationsStream, setToken, type StreamEvent } from './lib/api';
 
 type Locale = 'ar' | 'en';
 
@@ -60,7 +60,12 @@ async function verify() {
   }
   setToken(res.data!.token);
   signedIn.value = true;
+  connectStream();
 }
+
+onUnmounted(() => {
+  disconnectStream();
+});
 
 /* ---------- health ---------- */
 const health = ref<'unknown' | 'ok' | 'degraded'>('unknown');
@@ -73,18 +78,38 @@ onMounted(async () => {
  * There is no live feed wired to this screen yet, so it renders an explicit
  * empty state instead of inventing bookings or alarms.
  */
+/* ---------- live operations stream ---------- */
+const streamState = ref<'idle' | 'connecting' | 'open' | 'error' | 'closed'>('idle');
+const events = ref<StreamEvent[]>([]);
+let closeStream: (() => void) | null = null;
+
+const sosOpen = computed(
+  () => events.value.filter((e) => e.kind === 'sos' && e.state !== 'closed').length,
+);
+
 const kpis = computed(() => [
-  { key: 'active', label: ar.value ? 'زيارات جارية' : 'Active visits', value: '—' },
-  { key: 'waiting', label: ar.value ? 'بحث قيد الانتظار' : 'Searches waiting', value: '—' },
-  { key: 'online', label: ar.value ? 'ممارسون متاحون' : 'Providers online', value: '—' },
-  { key: 'sos', label: ar.value ? 'استغاثات مفتوحة' : 'Open SOS', value: '0', alert: false },
+  { key: 'active', label: ar.value ? 'زيارات جارية' : 'Active visits', value: String(events.value.filter((e) => e.to_state === 'in_session').length) },
+  { key: 'waiting', label: ar.value ? 'بحث قيد الانتظار' : 'Searches waiting', value: String(events.value.filter((e) => e.to_state === 'searching').length) },
+  { key: 'online', label: ar.value ? 'أحداث اليوم' : 'Events today', value: String(events.value.length) },
+  { key: 'sos', label: ar.value ? 'استغاثات مفتوحة' : 'Open SOS', value: String(sosOpen.value) },
 ]);
 
-const streams = computed(() => [
-  ar.value ? 'البث المباشر غير موصول بعد' : 'Live stream not connected yet',
-]);
+function connectStream() {
+  if (closeStream) return;
+  closeStream = openOperationsStream(
+    (event) => {
+      events.value = [event, ...events.value].slice(0, 100);
+    },
+    (state) => {
+      streamState.value = state;
+    },
+  );
+}
 
-const sosOpen = ref(0);
+function disconnectStream() {
+  closeStream?.();
+  closeStream = null;
+}
 
 const nav = computed(() => [
   { id: 'ops', label: ar.value ? 'غرفة العمليات' : 'Operations room', icon: 'pulse' },
@@ -223,10 +248,26 @@ function t(arText: string, enText: string) {
           <section class="panel">
             <header class="panel-head">
               <h2>{{ t('بث الأحداث', 'Event stream') }}</h2>
-              <span class="panel-tag">{{ t('غير موصول', 'Not connected') }}</span>
+              <span :class="['panel-tag', streamState === 'open' ? 'live' : '']">
+                {{ streamState === 'open' ? t('مباشر', 'Live')
+                  : streamState === 'connecting' ? t('جارٍ الاتصال', 'Connecting')
+                  : streamState === 'error' ? t('غير مصرح أو منقطع', 'Denied or disconnected')
+                  : t('غير موصول', 'Not connected') }}
+              </span>
             </header>
 
-            <div class="empty">
+            <ul v-if="events.length" class="events">
+              <li v-for="(e, i) in events" :key="`${e.kind}-${i}`" :class="['event', e.kind]">
+                <span class="event-dot" aria-hidden="true" />
+                <span class="event-body">
+                  <strong>{{ e.kind === 'sos' ? t('استغاثة', 'SOS') : t('حجز', 'Booking') }}</strong>
+                  <span class="event-state">{{ e.to_state || e.state || e.event }}</span>
+                </span>
+                <time>{{ (e.created_at || e.occurred_at || '').slice(11, 19) }}</time>
+              </li>
+            </ul>
+
+            <div v-else class="empty">
               <div class="empty-mark" aria-hidden="true">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
                   <path d="M4 18V6m0 12h16M8 15l3-4 3 2 4-6" stroke="currentColor"
@@ -235,8 +276,11 @@ function t(arText: string, enText: string) {
               </div>
               <p class="empty-title">{{ t('لا توجد أحداث لعرضها بعد', 'No events to show yet') }}</p>
               <p class="empty-body">
-                {{ t('سيظهر هنا كل حدث حجز ووصول واستغاثة فور ربط قناة البث الموثقة. لن تُعرض بيانات تجريبية على أنها حقيقية.',
-                     'Booking, arrival and SOS events will appear here once the authenticated stream is wired. No demo data is shown as real.') }}
+                {{ streamState === 'error'
+                  ? t('تعذر الاتصال بالبث: الحساب قد لا يملك دور عمليات، أو الخادم غير متاح.',
+                      'Could not connect: the account may lack a staff role, or the server is unavailable.')
+                  : t('سيظهر هنا كل حدث حجز ووصول واستغاثة فور توفره. لن تُعرض بيانات تجريبية على أنها حقيقية.',
+                      'Booking, arrival and SOS events appear here as they occur. No demo data is shown as real.') }}
               </p>
             </div>
           </section>
@@ -368,6 +412,17 @@ function t(arText: string, enText: string) {
 .panel-head h2 { margin: 0; font-size: 13px; font-weight: 700; color: var(--navy); }
 .panel-tag { font-size: 10px; font-weight: 700; color: var(--neutral-400);
   background: var(--neutral-100); border-radius: 999px; padding: 3px 9px; }
+.panel-tag.live { color: var(--success-600); background: var(--success-50); }
+
+.events { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; max-height: 260px; overflow-y: auto; }
+.event { display: flex; align-items: center; gap: 10px; padding: 8px 6px; border-radius: 8px; font-size: 12px; }
+.event:nth-child(odd) { background: var(--neutral-25); }
+.event-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-500); flex: 0 0 auto; }
+.event.sos .event-dot { background: var(--coral-500); }
+.event-body { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.event-body strong { color: var(--navy); }
+.event-state { color: var(--neutral-500); font-family: ui-monospace, monospace; font-size: 11px; }
+.event time { margin-inline-start: auto; color: var(--neutral-400); font-size: 10px; font-variant-numeric: tabular-nums; }
 
 .empty { display: grid; justify-items: center; text-align: center; padding: 26px 12px 30px; }
 .empty-mark { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;

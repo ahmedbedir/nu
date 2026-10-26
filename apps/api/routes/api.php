@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\HealthController;
 use App\Http\Controllers\Api\PatientController;
@@ -7,8 +8,11 @@ use App\Http\Controllers\Api\BookingController;
 use App\Http\Controllers\Api\CatalogController;
 use App\Http\Controllers\Api\ConsentController;
 use App\Http\Controllers\Api\FinanceController;
+use App\Http\Controllers\Api\OfferController;
+use App\Http\Controllers\Api\OperationsController;
 use App\Http\Controllers\Api\ProfessionalController;
 use App\Http\Controllers\Api\ProviderOfferController;
+use App\Http\Controllers\Api\ProviderPresenceController;
 use App\Http\Controllers\Api\ServiceController;
 use App\Http\Controllers\Api\SosController;
 use App\Http\Controllers\Api\VisitController;
@@ -40,6 +44,15 @@ Route::prefix('v1')->group(function () {
         Route::get('auth/me', [AuthController::class, 'me']);
 
         Route::apiResource('patients', PatientController::class);
+
+        // Visit addresses (the destination, never the booker's device position)
+        Route::get('patients/{patient}/addresses', [AddressController::class, 'index']);
+        Route::post('patients/{patient}/addresses', [AddressController::class, 'store']);
+        Route::delete('patients/{patient}/addresses/{address}', [AddressController::class, 'destroy']);
+
+        // Provider presence and incoming offers
+        Route::put('professionals/presence', [ProviderPresenceController::class, 'update']);
+        Route::get('professionals/offers', [OfferController::class, 'index']);
 
         // Booking and dispatch
         Route::post('bookings', [BookingController::class, 'store']);
@@ -83,6 +96,7 @@ Route::prefix('v1')->group(function () {
             Route::post('catalog/services/{service}/publish', [CatalogController::class, 'publish']);
             Route::post('catalog/services/{service}/suspend', [CatalogController::class, 'suspend']);
             Route::post('finance/refunds/{refund}/approve', [FinanceController::class, 'approveRefund']);
+            Route::get('operations/stream', [OperationsController::class, 'stream']);
         });
 
         Route::post('patients/{patient}/delegations', [PatientController::class, 'grantDelegation']);

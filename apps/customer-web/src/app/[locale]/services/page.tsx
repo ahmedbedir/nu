@@ -83,7 +83,7 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
                     {formatMoney(s.base_price, l)}
                   </span>
                 </div>
-                <Link href={`/${l}/login`} className="btn-primary !px-4 !py-2 !text-xs">
+                <Link href={`/${l}/book/${s.public_id}`} className="btn-primary !px-4 !py-2 !text-xs">
                   {t.services.book}
                 </Link>
               </div>

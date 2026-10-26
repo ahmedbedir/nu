@@ -97,6 +97,17 @@ Catalog/pricing HTTP endpoints and provider-onboarding endpoints; then the front
 - [x] `packages/contracts/design-tokens.json` — one brand source for all surfaces.
 - [x] `packages/contracts/events.md` — past-tense fact events, no PHI in payloads.
 
+## Latest additions
+
+- [x] Customer visit-address API with Egypt coordinate bounds and ownership policy.
+- [x] Provider presence API requiring fresh coordinates before Online.
+- [x] Provider offer inbox API.
+- [x] Customer booking wizard: patient → visit address → gender → search → wait for
+      provider acceptance → quote → confirm. The UI polls only as a local fallback;
+      the operations room now has the authenticated SSE foundation.
+- [x] Operations SSE stream with bearer auth and staff middleware; no PHI/exact location
+      is broadcast.
+
 ## Verification beyond unit tests
 
 - [x] `tools/e2e-smoke.sh` — 13 real HTTP steps against the running server (health,

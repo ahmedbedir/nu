@@ -14,8 +14,13 @@ Nothing here is presented to users as working.
 
 ## Not yet implemented (schema exists, behaviour pending)
 
-- **Live operations stream** — the admin room renders an explicit "not connected" state
-  rather than fake data. Needs an authenticated Reverb/SSE channel (T-061).
+- **Live operations stream** — an authenticated SSE endpoint now exists and the room
+  renders Live / Connecting / Denied states with real events. Production should replace
+  the bounded SSE adapter with Reverb or an equivalent broker; the client contract and
+  event names stay the same. Per-channel subscription authorisation (T-061) is still
+  coarse: the whole staff stream is gated by the `staff` middleware.
+- **Customer booking wait step uses polling** as a local fallback until the customer app
+  consumes the same authenticated stream.
 - **Eligibility screening is now called from booking creation** — hard red flags stop
   the conventional booking; UNKNOWN fields create `requires_information`; soft rules
   create `clinical_review_pending`. Typed API responses now return `422 clinical_blocked`
